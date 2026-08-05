@@ -1,0 +1,124 @@
+.dash {
+    --gap: 1rem;
+    padding: var(--gap);
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+
+.dash__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--gap);
+}
+
+.dash__actions button {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #ddd;
+    background: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.dash__stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--gap);
+    margin-bottom: var(--gap);
+}
+
+.stat {
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 0.75rem;
+    background: #fff;
+}
+
+.stat__label {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.stat__value {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.stat__delta {
+    margin-top: 0.25rem;
+    font-size: 0.8rem;
+    color: #777;
+}
+
+.dash__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--gap);
+}
+
+.panel {
+    border: 1px solid #eee;
+    border-radius: 12px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+/*    min-height: 280px;  ensure charts always have space */
+}
+
+.panel__title {
+    padding: 0.75rem;
+    border-bottom: 1px solid #f2f2f2;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.panel__chart {
+/*     Critical: give charts an explicit height */
+    height: 220px;
+    padding: 0.5rem 0.75rem;
+}
+
+.dash__status {
+    margin-top: var(--gap);
+    color: #444;
+}
+
+.dash__status--error {
+    color: #b00020;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+}
+
+.pagination li {
+    margin: 0 5px;
+}
+
+.pagination li a {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #333;
+}
+
+.pagination li.active a {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.pagination li.disabled a {
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+.pagination li.previous a,
+.pagination li.next a {
+    font-weight: bold;
+}

@@ -1,0 +1,189 @@
+﻿/* make the map fill the viewport */
+html, body, #root {
+    height: 100%;
+    margin: 0;
+}
+
+.map-wrap {
+    position: relative; /* anchor for absolute children */
+    height: 100vh; /* full screen map */
+    width: 100%;
+}
+
+.map-container {
+    position: absolute;
+    inset: 0; /* top/right/bottom/left: 0 */
+}
+
+
+/* neutralize default mapbox control look on this nav */
+.map-links.mapboxgl-ctrl,
+.map-links.mapboxgl-ctrl-group {
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+}
+
+/* Glassy segmented control centered at top */
+.map-links {
+    position: fixed;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    /* layout */
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    gap: 0;
+    /* chrome */
+    padding: 6px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.50);
+    backdrop-filter: blur(10px) saturate(1.15);
+    border: 1px solid rgba(255,255,255,.45);
+    box-shadow: 0 10px 30px rgba(0,0,0,.10);
+    /* so the map still drags around it except on the links */
+    pointer-events: none;
+    /* sliding indicator base */
+    position: fixed; /* keep it stable on scroll */
+}
+
+    .map-links a {
+        pointer-events: auto;
+        position: relative;
+        isolation: isolate; /* keeps shadows tidy */
+        min-width: 132px; /* equal-ish tab widths */
+        padding: 10px 18px;
+        text-align: center;
+        text-decoration: none;
+        font: 600 13px/1 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+        color: #0f172a;
+        border-radius: 999px;
+        transition: color .2s ease, transform .12s ease;
+        z-index: 1; /* above the indicator */
+    }
+
+        .map-links a:hover {
+            transform: translateY(-1px);
+        }
+
+        .map-links a:active {
+            transform: translateY(0);
+        }
+
+    /* Sliding pill indicator (pure CSS) */
+    .map-links::before {
+        content: "";
+        position: absolute;
+        inset: 6px; /* matches nav padding */
+        width: calc(50% - 6px); /* two tabs */
+        border-radius: 999px;
+        background: rgba(255,255,255,.95);
+        box-shadow: 0 6px 16px rgba(0,0,0,.10);
+        transform: translateX(0%); /* under the 1st tab by default */
+        transition: transform .25s ease;
+        z-index: 0;
+    }
+    /* Move indicator under the 2nd tab on hover/focus (works today with <Link>) */
+    .map-links:has(a:nth-child(2):hover)::before,
+    .map-links:has(a:nth-child(2):focus-visible)::before {
+        transform: translateX(100%);
+    }
+
+    /* Focus ring for keyboard users */
+    .map-links a:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(66,100,251,.45);
+        border-radius: 999px;
+    }
+
+/* Compact on small screens */
+@media (max-width: 640px) {
+    .map-links {
+        top: 8px;
+        padding: 4px;
+    }
+
+        .map-links a {
+            min-width: 112px;
+            padding: 8px 14px;
+            font-size: 12px;
+        }
+
+        .map-links::before {
+            inset: 4px;
+            width: calc(50% - 4px);
+        }
+}
+
+/* Optional: if you switch <Link> -> <NavLink>, this makes the indicator
+   stick to the active route automatically (no JS needed) */
+.map-links:has(a:nth-child(2)[aria-current="page"])::before {
+    transform: translateX(100%);
+}
+
+.map-links a[aria-current="page"] {
+    color: #0b1220;
+}
+
+:root {
+    /* Mapbox control palette + accent */
+    --control-bg: #fff;
+    --control-border: rgba(0,0,0,.12);
+    --accent: #4264FB; /* Mapbox blue */
+    --text: #0f172a;
+}
+
+/* make the nav look like a Mapbox control group */
+.map-links.mapboxgl-ctrl.mapboxgl-ctrl-group {
+    position: fixed;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    display: inline-flex;
+    gap: 4px;
+    padding: 4px;
+    background: var(--control-bg);
+    border: 1px solid var(--control-border);
+    border-radius: 4px;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.04), 0 2px 8px rgba(0,0,0,.06);
+    /* don't block map drags except on buttons */
+    pointer-events: none;
+}
+
+.map-links a {
+    pointer-events: auto;
+    display: inline-block;
+    min-width: 120px;
+    padding: 8px 14px;
+    text-align: center;
+    text-decoration: none;
+    font: 600 13px/1 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto;
+    color: var(--text);
+    border-radius: 4px;
+    transition: background-color .15s ease, color .15s ease, transform .12s ease;
+}
+
+    .map-links a:hover {
+        background: #f4f6f8;
+        transform: translateY(-1px);
+    }
+
+    .map-links a:active {
+        transform: translateY(0);
+    }
+
+    /* ACTIVE TAB — works automatically if you use <NavLink> */
+    .map-links a[aria-current="page"] {
+        background: var(--accent);
+        color: #fff;
+        box-shadow: 0 1px 0 rgba(0,0,0,.06) inset;
+    }
+
+    /* keyboard focus */
+    .map-links a:focus-visible {
+        outline: 2px solid color-mix(in srgb, var(--accent) 55%, transparent);
+        outline-offset: 2px;
+    }

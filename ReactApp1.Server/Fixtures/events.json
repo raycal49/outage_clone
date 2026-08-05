@@ -1,0 +1,3807 @@
+[
+  {
+    "id": 588120,
+    "startTime": 1767987713000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767998513000,
+    "numPeople": 182,
+    "status": "Pending Assessment",
+    "identifier": "5856367",
+    "latitude": 29.88958,
+    "longitude": -95.38498,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "GREENSPOINT" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77037" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "b6ae77e25abce489fed55d99ca6fe39c0320fdc8"
+      }
+    ]
+  },
+  {
+    "id": 588105,
+    "startTime": 1767987191000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767998013000,
+    "numPeople": 154,
+    "status": "Pending Assessment",
+    "identifier": "5856348",
+    "latitude": 29.96255,
+    "longitude": -95.23152,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HUMBLE" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "HUMBLE" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77396" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "0806bf5f31fe181b9bff19a39ff6bd44fe355790"
+      }
+    ]
+  },
+  {
+    "id": 587993,
+    "startTime": 1767981952000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767993300000,
+    "numPeople": 138,
+    "status": "Planned Outage",
+    "cause": "Planned Outage",
+    "identifier": "5856217",
+    "latitude": 29.97944,
+    "longitude": -95.16096,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HUMBLE" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "HUMBLE" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77346" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "e7d54933e1bbd43be6a80d71667032827f35f1d9"
+      }
+    ]
+  },
+  {
+    "id": 587810,
+    "startTime": 1767974785000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767989700000,
+    "numPeople": 125,
+    "status": "Planned Outage",
+    "cause": "Planned Outage",
+    "identifier": "5856019",
+    "latitude": 29.73916,
+    "longitude": -95.58519,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "SUGAR LAND" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77077" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "ebd492eb0fe24d2423718684c16e37479709f246"
+      }
+    ]
+  },
+  {
+    "id": 587600,
+    "startTime": 1767968118000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767994200000,
+    "numPeople": 117,
+    "status": "Planned Outage",
+    "cause": "Planned Outage",
+    "identifier": "5855766",
+    "latitude": 29.99433,
+    "longitude": -95.14324,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HUMBLE" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "HUMBLE" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77346" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "e40b6c73adbc8ba3588a48fea52a0123973eb26f"
+      }
+    ]
+  },
+  {
+    "id": 587931,
+    "startTime": 1767979360000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767990600000,
+    "numPeople": 116,
+    "status": "Planned Outage",
+    "cause": "Planned Outage",
+    "identifier": "5856154",
+    "latitude": 29.68075,
+    "longitude": -95.41995,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "BELLAIRE" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77054" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "fc6fe5830a16aa97395ec4bc700eb5309c6c3983"
+      }
+    ]
+  },
+  {
+    "id": 588091,
+    "startTime": 1767986781000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767994200000,
+    "numPeople": 116,
+    "status": "Planned Outage",
+    "cause": "Planned Outage",
+    "identifier": "5856333",
+    "latitude": 29.73128,
+    "longitude": -95.58073,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "SUGAR LAND" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77082" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "9ed7d12820003f04d7ba270e6e999af7ac6d6b5d"
+      }
+    ]
+  },
+  {
+    "id": 588024,
+    "startTime": 1767984073000,
+    "lastUpdatedTime": 1767988335113,
+    "numPeople": 115,
+    "status": "Planned Outage",
+    "cause": "Planned Outage",
+    "identifier": "5856254",
+    "latitude": 29.76629,
+    "longitude": -95.88964,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "BROOKSHIRE" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "WALLER" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "KATY" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77423" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "eec74a6e865f368fe10b36313fd88790ed0b2631"
+      }
+    ]
+  },
+  {
+    "id": 587636,
+    "startTime": 1767969172000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767991500000,
+    "numPeople": 109,
+    "status": "Planned Outage",
+    "cause": "Planned Outage",
+    "identifier": "5855804",
+    "latitude": 29.66702,
+    "longitude": -95.3123,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "HARRISBURG" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77087" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "6bea51b3cd448290066ed2e6ea058b2ac7ecddfc"
+      }
+    ]
+  },
+  {
+    "id": 587847,
+    "startTime": 1767975911000,
+    "lastUpdatedTime": 1767988335113,
+    "numPeople": 97,
+    "status": "Pending Assessment",
+    "identifier": "5856061",
+    "latitude": 29.76314,
+    "longitude": -95.28551,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "HARRISBURG" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77029" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "19363c8443e70b96447030f4f8753d2ff6898921"
+      }
+    ]
+  },
+  {
+    "id": 587808,
+    "startTime": 1767974774000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767989700000,
+    "numPeople": 92,
+    "status": "Planned Outage",
+    "cause": "Planned Outage",
+    "identifier": "5856017",
+    "latitude": 29.73916,
+    "longitude": -95.58519,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "SUGAR LAND" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77077" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "edd636f83dd73aba45b9e498e31ce3b10c834a8b"
+      }
+    ]
+  },
+  {
+    "id": 588117,
+    "startTime": 1767987607000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767995100000,
+    "numPeople": 87,
+    "status": "Planned Outage",
+    "cause": "Planned Outage",
+    "identifier": "5856363",
+    "latitude": 29.73155,
+    "longitude": -95.5755,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "SUGAR LAND" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77082" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "b4532ddc1a4a38fc1cc2d0c71eb9211ed5a91fb7"
+      }
+    ]
+  },
+  {
+    "id": 588035,
+    "startTime": 1767984470000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1768002960000,
+    "numPeople": 84,
+    "status": "Pending Assessment",
+    "identifier": "5856267",
+    "latitude": 29.65496,
+    "longitude": -95.35789,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "SOUTH HOUSTON" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77051" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "01317064dd9e2b25dd8dc5ebd0d5c4a5be70f562"
+      }
+    ]
+  },
+  {
+    "id": 587939,
+    "startTime": 1767979829000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767992400000,
+    "numPeople": 69,
+    "status": "Planned Outage",
+    "cause": "Planned Outage",
+    "identifier": "5856163",
+    "latitude": 29.68138,
+    "longitude": -95.41956,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "BELLAIRE" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77054" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "eec808a272c9a346b428f25363babd58adf2059b"
+      }
+    ]
+  },
+  {
+    "id": 588023,
+    "startTime": 1767984068000,
+    "lastUpdatedTime": 1767988335113,
+    "numPeople": 69,
+    "status": "Planned Outage",
+    "cause": "Planned Outage",
+    "identifier": "5856253",
+    "latitude": 29.76776,
+    "longitude": -95.88937,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "BROOKSHIRE" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "WALLER" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "KATY" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77423" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "eb1802b879fa65b7638a0ccd8b01d7d081d384d6"
+      }
+    ]
+  },
+  {
+    "id": 587779,
+    "startTime": 1767974092000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767999600000,
+    "numPeople": 66,
+    "status": "Planned Outage",
+    "cause": "Planned Outage",
+    "identifier": "5855986",
+    "latitude": 29.52769,
+    "longitude": -95.71056,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "RICHMOND" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "FORT BEND" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "FORT BEND" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77469" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "00abcec1c5d10291c02776698b1c9c471a584b0b"
+      }
+    ]
+  },
+  {
+    "id": 587992,
+    "startTime": 1767981946000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767993300000,
+    "numPeople": 66,
+    "status": "Planned Outage",
+    "cause": "Planned Outage",
+    "identifier": "5856216",
+    "latitude": 29.97944,
+    "longitude": -95.16096,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HUMBLE" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "HUMBLE" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77346" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "af546a7b96b26033cf82bc9b79d1ca63e588da58"
+      }
+    ]
+  },
+  {
+    "id": 588116,
+    "startTime": 1767987602000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767998700000,
+    "numPeople": 61,
+    "status": "Planned Outage",
+    "cause": "Planned Outage",
+    "identifier": "5856362",
+    "latitude": 29.73157,
+    "longitude": -95.57549,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "SUGAR LAND" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77082" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "973e019053fda3f1bdb45ff6261832da15486a79"
+      }
+    ]
+  },
+  {
+    "id": 587614,
+    "startTime": 1767968525000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767994200000,
+    "numPeople": 59,
+    "status": "Planned Outage",
+    "cause": "Planned Outage",
+    "identifier": "5855781",
+    "latitude": 29.99651,
+    "longitude": -95.1481,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HUMBLE" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "HUMBLE" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77346" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "e5cd7e8c8ab46ca25b766d9ac598436fd6d1bcd3"
+      }
+    ]
+  },
+  {
+    "id": 587986,
+    "startTime": 1767981438000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767996000000,
+    "numPeople": 46,
+    "status": "Planned Outage",
+    "cause": "Planned Outage",
+    "identifier": "5856210",
+    "latitude": 29.6484,
+    "longitude": -95.66905,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "SUGAR LAND" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "FORT BEND" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "SUGAR LAND" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77498" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "5c8f1136b5da03fcebc51fe72eb1a919f2198b9a"
+      }
+    ]
+  },
+  {
+    "id": 588112,
+    "startTime": 1767987485000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767998285000,
+    "numPeople": 46,
+    "status": "Pending Assessment",
+    "identifier": "5856357",
+    "latitude": 29.83336,
+    "longitude": -95.4487,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "GREENSPOINT" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77018" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "e00f14123cabcf5d8e3576e214d1284b0b15264e"
+      }
+    ]
+  },
+  {
+    "id": 587701,
+    "startTime": 1767971329000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1768000500000,
+    "numPeople": 45,
+    "status": "Planned Outage",
+    "cause": "Planned Outage",
+    "identifier": "5855886",
+    "latitude": 29.61175,
+    "longitude": -95.4052,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "SOUTH HOUSTON" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77047" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "0ebad3b365cdd6e4b53d3d7b3a6c20e54345ca0d"
+      }
+    ]
+  },
+  {
+    "id": 588037,
+    "startTime": 1767984557000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767995357000,
+    "numPeople": 45,
+    "status": "Pending Assessment",
+    "identifier": "5856269",
+    "latitude": 29.66581,
+    "longitude": -95.46461,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "BELLAIRE" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77035" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "ff23e3056203aa341213514843abc74a35b5716b"
+      }
+    ]
+  },
+  {
+    "id": 587843,
+    "startTime": 1767975848000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767990600000,
+    "numPeople": 34,
+    "status": "Planned Outage",
+    "cause": "Planned Outage",
+    "identifier": "5856056",
+    "latitude": 30.10662,
+    "longitude": -95.60851,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "TOMBALL" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "CYPRESS" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77375" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "e7cab672fdb133ac1bcdb15b725ded20d7fba6c5"
+      }
+    ]
+  },
+  {
+    "id": 587754,
+    "startTime": 1767973267000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767988440000,
+    "numPeople": 32,
+    "status": "Pending Assessment",
+    "identifier": "5855954",
+    "latitude": 29.9746,
+    "longitude": -95.55876,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "GREENSPOINT" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77070" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "aa44c12b657fb56e75dcb3def6bbcd293d9259e2"
+      }
+    ]
+  },
+  {
+    "id": 587975,
+    "startTime": 1767981051000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767996000000,
+    "numPeople": 32,
+    "status": "Planned Outage",
+    "cause": "Planned Outage",
+    "identifier": "5856199",
+    "latitude": 29.73956,
+    "longitude": -95.48122,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "BELLAIRE" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77057" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "ee785107d08d18b57dc8873f7e2d02ade739387e"
+      }
+    ]
+  },
+  {
+    "id": 587590,
+    "startTime": 1767967625000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767993300000,
+    "numPeople": 28,
+    "status": "Planned Outage",
+    "cause": "Planned Outage",
+    "identifier": "5855755",
+    "latitude": 29.64549,
+    "longitude": -95.50442,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "BELLAIRE" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77035" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "8cb4ebe8cbf6cd845c7d9237c4f6be86505d9a83"
+      }
+    ]
+  },
+  {
+    "id": 587888,
+    "startTime": 1767977765000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767992400000,
+    "numPeople": 28,
+    "status": "Planned Outage",
+    "cause": "Planned Outage",
+    "identifier": "5856110",
+    "latitude": 29.64519,
+    "longitude": -95.50337,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "BELLAIRE" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77035" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "ba712eed859284c1f370268912f74a4d035014a4"
+      }
+    ]
+  },
+  {
+    "id": 587670,
+    "startTime": 1767970340000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767996000000,
+    "numPeople": 20,
+    "status": "Planned Outage",
+    "cause": "Planned Outage",
+    "identifier": "5855850",
+    "latitude": 29.2867,
+    "longitude": -94.80445,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "GALVESTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "GALVESTON" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "GALVESTON" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77550" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "66cd680b8c871ee5242c5ef3bcace91958e79d50"
+      }
+    ]
+  },
+  {
+    "id": 587844,
+    "startTime": 1767975853000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767990600000,
+    "numPeople": 20,
+    "status": "Planned Outage",
+    "cause": "Planned Outage",
+    "identifier": "5856057",
+    "latitude": 30.10584,
+    "longitude": -95.60868,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "TOMBALL" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "CYPRESS" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77375" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "1732666eb08d19c8e972a3baa62504534cefa5f3"
+      }
+    ]
+  },
+  {
+    "id": 587980,
+    "startTime": 1767981358000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767988800000,
+    "numPeople": 19,
+    "status": "Planned Outage",
+    "cause": "Planned Outage",
+    "identifier": "5856204",
+    "latitude": 29.21785,
+    "longitude": -94.91276,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "GALVESTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "GALVESTON" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "GALVESTON" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77554" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "093cd6c4d8a030c836bffe7a7419b5757a145778"
+      }
+    ]
+  },
+  {
+    "id": 588069,
+    "startTime": 1767985648000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767993300000,
+    "numPeople": 19,
+    "status": "Planned Outage",
+    "cause": "Planned Outage",
+    "identifier": "5856308",
+    "latitude": 29.91965,
+    "longitude": -95.07626,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "CROSBY" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "BAYTOWN" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77532" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "3490246186733eeacf6281ade3339e75f79abdf8"
+      }
+    ]
+  },
+  {
+    "id": 588097,
+    "startTime": 1767987005000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767997805000,
+    "numPeople": 19,
+    "status": "Pending Assessment",
+    "identifier": "5856339",
+    "latitude": 29.79731,
+    "longitude": -95.46671,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "SPRING BRANCH" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77055" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "c93ef327d8bb3d27b5ce962399b70fc67ebbb236"
+      }
+    ]
+  },
+  {
+    "id": 588088,
+    "startTime": 1767986715000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767997526000,
+    "numPeople": 17,
+    "status": "Pending Assessment",
+    "identifier": "5856330",
+    "latitude": 29.70329,
+    "longitude": -95.48108,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "BELLAIRE" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77081" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "6801b2da7933e157f6ccdfe789d3883c7e0c8582"
+      }
+    ]
+  },
+  {
+    "id": 588068,
+    "startTime": 1767985642000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767993300000,
+    "numPeople": 16,
+    "status": "Planned Outage",
+    "cause": "Planned Outage",
+    "identifier": "5856307",
+    "latitude": 29.92058,
+    "longitude": -95.07666,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "CROSBY" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "BAYTOWN" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77532" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "5a71d815591f543af0dfd950c99dabe0cad6b8b1"
+      }
+    ]
+  },
+  {
+    "id": 587527,
+    "startTime": 1767964472000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767989700000,
+    "numPeople": 15,
+    "status": "Planned Outage",
+    "cause": "Planned Outage",
+    "identifier": "5855667",
+    "latitude": 29.2905,
+    "longitude": -94.81207,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "GALVESTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "GALVESTON" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "GALVESTON" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77550" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "80b04f78b507f9e5ef7b9fe91818df296d9bcb2c"
+      }
+    ]
+  },
+  {
+    "id": 588036,
+    "startTime": 1767984535000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767996000000,
+    "numPeople": 15,
+    "status": "Planned Outage",
+    "cause": "Planned Outage",
+    "identifier": "5856268",
+    "latitude": 29.66129,
+    "longitude": -95.3594,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "SOUTH HOUSTON" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77051" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "e9e22f7183a6e298dbe31d0fa570fa6d57e55148"
+      }
+    ]
+  },
+  {
+    "id": 587928,
+    "startTime": 1767979306000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767988800000,
+    "numPeople": 10,
+    "status": "Planned Outage",
+    "cause": "Planned Outage",
+    "identifier": "5856151",
+    "latitude": 30.10222,
+    "longitude": -95.65118,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "TOMBALL" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "CYPRESS" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77377" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "04a31e7fbea60fd003cd07d16b1ce11c9f13b632"
+      }
+    ]
+  },
+  {
+    "id": 587595,
+    "startTime": 1767967753000,
+    "lastUpdatedTime": 1767988335113,
+    "numPeople": 7,
+    "status": "Planned Outage",
+    "cause": "Planned Outage",
+    "identifier": "5855758",
+    "latitude": 29.72582,
+    "longitude": -94.98239,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "BAYTOWN" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "BAYTOWN" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77520" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "576218e7118811110316cb972ab741b6d5aa6b08"
+      }
+    ]
+  },
+  {
+    "id": 587743,
+    "startTime": 1767972877000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767991500000,
+    "numPeople": 7,
+    "status": "Planned Outage",
+    "cause": "Planned Outage",
+    "identifier": "5855941",
+    "latitude": 29.2178,
+    "longitude": -94.91266,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "GALVESTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "GALVESTON" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "GALVESTON" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77554" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "66d2a35e7ee443e4c15c962302d5e91d6fb08780"
+      }
+    ]
+  },
+  {
+    "id": 587944,
+    "startTime": 1767980022000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767991860000,
+    "numPeople": 7,
+    "status": "Crew Assessing",
+    "identifier": "5856169",
+    "latitude": 29.63333,
+    "longitude": -95.01574,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "LA PORTE" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "BAYTOWN" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77571" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "ccec15b1bcb6a1482f8024cc455a7da0a76c8515"
+      }
+    ]
+  },
+  {
+    "id": 587757,
+    "startTime": 1767973358000,
+    "lastUpdatedTime": 1767988335113,
+    "numPeople": 6,
+    "status": "Crew Assessing",
+    "identifier": "5855958",
+    "latitude": 29.81625,
+    "longitude": -95.30219,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "HARRISBURG" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77028" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "e2ad12f0612ae236741f5c20d0f0d3b797e623d4"
+      }
+    ]
+  },
+  {
+    "id": 587946,
+    "startTime": 1767980087000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767995580000,
+    "numPeople": 6,
+    "status": "Crew Assessing",
+    "identifier": "5856171",
+    "latitude": 29.99422,
+    "longitude": -95.1159,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "CROSBY" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "BAYTOWN" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77532" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "4abd999194f918fdb87b4032c2fc98b04688d4ee"
+      }
+    ]
+  },
+  {
+    "id": 588107,
+    "startTime": 1767987220000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767998020000,
+    "numPeople": 6,
+    "status": "Pending Assessment",
+    "identifier": "5856350",
+    "latitude": 29.81161,
+    "longitude": -95.40551,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "BELLAIRE" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77008" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "fa8f07e67d59ca96896ca190f6b235fae3868ec8"
+      }
+    ]
+  },
+  {
+    "id": 588130,
+    "startTime": 1767988149000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767998949000,
+    "numPeople": 6,
+    "status": "Pending Assessment",
+    "identifier": "5856378",
+    "latitude": 29.85527,
+    "longitude": -95.39884,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "GREENSPOINT" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77076" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "b4e939c4ed5e27e637a9241807b92889b64c8f3c"
+      }
+    ]
+  },
+  {
+    "id": 588010,
+    "startTime": 1767983863000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767995220000,
+    "numPeople": 5,
+    "status": "Crew Assessing",
+    "identifier": "5856238",
+    "latitude": 29.49416,
+    "longitude": -94.98998,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "BACLIFF" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "GALVESTON" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "GALVESTON" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77518" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "cf09052b6a9a3b2f979081d85b95cf98c85d41eb"
+      }
+    ]
+  },
+  {
+    "id": 588084,
+    "startTime": 1767986681000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767997481000,
+    "numPeople": 5,
+    "status": "Pending Assessment",
+    "identifier": "5856326",
+    "latitude": 29.73857,
+    "longitude": -95.47661,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "BELLAIRE" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77056" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "c973277ac7aa7708c50deaca7538249473cfa0e5"
+      }
+    ]
+  },
+  {
+    "id": 588020,
+    "startTime": 1767983994000,
+    "lastUpdatedTime": 1767988335113,
+    "numPeople": 4,
+    "status": "Planned Outage",
+    "cause": "Planned Outage",
+    "identifier": "5856249",
+    "latitude": 29.97136,
+    "longitude": -95.67858,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "CYPRESS" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "CYPRESS" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77429" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "9e598e94e38d35f4df76e43315fd6deee6934145"
+      }
+    ]
+  },
+  {
+    "id": 588132,
+    "startTime": 1767988193000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767998993000,
+    "numPeople": 4,
+    "status": "Pending Assessment",
+    "identifier": "5856380",
+    "latitude": 29.69106,
+    "longitude": -95.72772,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "RICHMOND" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "FORT BEND" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "FORT BEND" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77407" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "575c7dc377408445c88602cb73f4bf4271d3958a"
+      }
+    ]
+  },
+  {
+    "id": 588072,
+    "startTime": 1767985717000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767996517000,
+    "numPeople": 3,
+    "status": "Pending Assessment",
+    "identifier": "5856311",
+    "latitude": 29.76255,
+    "longitude": -95.51906,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "SPRING BRANCH" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77024" ]
+      },
+      {
+        "property": "polygon",
+        "value": true
+      },
+      {
+        "property": "premise_hash",
+        "value": "3b291b52022e256ecdc4d44b1e368f12fe3f5575"
+      }
+    ]
+  },
+  {
+    "id": 587612,
+    "startTime": 1767968414000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767994200000,
+    "numPeople": 2,
+    "status": "Planned Outage",
+    "cause": "Planned Outage",
+    "identifier": "5855778",
+    "latitude": 29.74486,
+    "longitude": -96.26895,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "SEALY" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "AUSTIN" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "KATY" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77474" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "3e1fd8207b5bf7f48775efc0161fd7b05413842d"
+      }
+    ]
+  },
+  {
+    "id": 587736,
+    "startTime": 1767972580000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767994200000,
+    "numPeople": 2,
+    "status": "Planned Outage",
+    "cause": "Planned Outage",
+    "identifier": "5855929",
+    "latitude": 29.66411,
+    "longitude": -95.31237,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "HARRISBURG" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77087" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "f210f79d270c737d5620194c970666cf3f860480"
+      }
+    ]
+  },
+  {
+    "id": 587824,
+    "startTime": 1767975129000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767993300000,
+    "numPeople": 2,
+    "status": "Planned Outage",
+    "cause": "Planned Outage",
+    "identifier": "5856033",
+    "latitude": 29.62609,
+    "longitude": -95.26613,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "SOUTH HOUSTON" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77075" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "a860cd686409d7f38270ddfcfb40b00a9556874f"
+      }
+    ]
+  },
+  {
+    "id": 587874,
+    "startTime": 1767976895000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767991560000,
+    "numPeople": 2,
+    "status": "Pending Assessment",
+    "identifier": "5856092",
+    "latitude": 29.74841,
+    "longitude": -95.03068,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "BAYTOWN" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "BAYTOWN" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77520" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "5b5090dbb3dfb773421bc7336ac31ddcb941263f"
+      }
+    ]
+  },
+  {
+    "id": 588135,
+    "startTime": 1767983011000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767993811000,
+    "numPeople": 2,
+    "status": "Pending Assessment",
+    "identifier": "5856383",
+    "latitude": 29.49414,
+    "longitude": -94.98993,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "BACLIFF" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "GALVESTON" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "GALVESTON" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77518" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "fd519b52b8a38f4695f4409c4361fa2372d44623"
+      }
+    ]
+  },
+  {
+    "id": 587669,
+    "startTime": 1767970292000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767990480000,
+    "numPeople": 1,
+    "status": "Crew Assessing",
+    "identifier": "5855847",
+    "latitude": 29.78845,
+    "longitude": -95.21425,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "HARRISBURG" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77013" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "3316501c718b6777f9745ba49cf07da6c27d005b"
+      }
+    ]
+  },
+  {
+    "id": 587724,
+    "startTime": 1767971986000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767992400000,
+    "numPeople": 1,
+    "status": "Planned Outage",
+    "cause": "Planned Outage",
+    "identifier": "5855911",
+    "latitude": 29.74594,
+    "longitude": -96.01104,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "BROOKSHIRE" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "WALLER" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "KATY" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77423" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "0dddf70091a1b21f3ecfc7cc4e9518cabfb97029"
+      }
+    ]
+  },
+  {
+    "id": 587735,
+    "startTime": 1767972576000,
+    "lastUpdatedTime": 1767988335113,
+    "numPeople": 1,
+    "status": "Pending Assessment",
+    "identifier": "5855928",
+    "latitude": 29.96924,
+    "longitude": -95.28206,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HUMBLE" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "HUMBLE" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77396" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "93fd8df714db6c127ac626f3b11e69f9139d1b93"
+      }
+    ]
+  },
+  {
+    "id": 587876,
+    "startTime": 1767976954000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767994440000,
+    "numPeople": 1,
+    "status": "Crew Assessing",
+    "identifier": "5856095",
+    "latitude": 29.97807,
+    "longitude": -95.87874,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOCKLEY" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "CYPRESS" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77447" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "f1c9c02ac0555cca1a9ee49d0e2ffc12dcb6e1c3"
+      }
+    ]
+  },
+  {
+    "id": 587880,
+    "startTime": 1767977479000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767996000000,
+    "numPeople": 1,
+    "status": "Planned Outage",
+    "cause": "Planned Outage",
+    "identifier": "5856101",
+    "latitude": 29.75119,
+    "longitude": -94.94198,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "BAYTOWN" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "BAYTOWN" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77520" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "5d0ccabfac89a22ac99e9f36a1c77d1d6025c422"
+      }
+    ]
+  },
+  {
+    "id": 587930,
+    "startTime": 1767979353000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767990153000,
+    "numPeople": 1,
+    "status": "Crew Assessing",
+    "identifier": "5856153",
+    "latitude": 29.80024,
+    "longitude": -95.51911,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "SPRING BRANCH" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77080" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "64719b74553b556514572ac87a619cdf9a9eb4f4"
+      }
+    ]
+  },
+  {
+    "id": 587950,
+    "startTime": 1767980158000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767990958000,
+    "numPeople": 1,
+    "status": "Pending Assessment",
+    "identifier": "5856174",
+    "latitude": 30.00934,
+    "longitude": -95.25641,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HUMBLE" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "HUMBLE" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77338" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "9a2385f782f7661b56619ec4daeb18a902778e18"
+      }
+    ]
+  },
+  {
+    "id": 587951,
+    "startTime": 1767980206000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1768002000000,
+    "numPeople": 1,
+    "status": "Pending Assessment",
+    "identifier": "5856175",
+    "latitude": 30.02555,
+    "longitude": -95.86772,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOCKLEY" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "CYPRESS" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77447" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "54f71190577f35523360d9010534e15817a3970a"
+      }
+    ]
+  },
+  {
+    "id": 587952,
+    "startTime": 1767980244000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767992100000,
+    "numPeople": 1,
+    "status": "Crew Assessing",
+    "identifier": "5856176",
+    "latitude": 30.05471,
+    "longitude": -95.58764,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "TOMBALL" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "CYPRESS" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77375" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "adbaecda8aec380cb69d0667b7667d5d8c967bec"
+      }
+    ]
+  },
+  {
+    "id": 587960,
+    "startTime": 1767980537000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767992040000,
+    "numPeople": 1,
+    "status": "Crew Assessing",
+    "identifier": "5856184",
+    "latitude": 29.81454,
+    "longitude": -95.46939,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "SPRING BRANCH" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77092" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "141df068a573f9748aeae12f48b202deb46a7bd8"
+      }
+    ]
+  },
+  {
+    "id": 587967,
+    "startTime": 1767980900000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767991700000,
+    "numPeople": 1,
+    "status": "Pending Assessment",
+    "identifier": "5856191",
+    "latitude": 29.68621,
+    "longitude": -95.29981,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "HARRISBURG" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77087" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "07fc8ab4349a70d2edfae378d548b617c2daec6d"
+      }
+    ]
+  },
+  {
+    "id": 588001,
+    "startTime": 1767982354000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767993154000,
+    "numPeople": 1,
+    "status": "Pending Assessment",
+    "identifier": "5856228",
+    "latitude": 29.67383,
+    "longitude": -95.22585,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "PASADENA" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "SOUTH HOUSTON" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77502" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "0d389279098f448b1c9858f4d14e37b1cdc78765"
+      }
+    ]
+  },
+  {
+    "id": 588002,
+    "startTime": 1767982451000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767993251000,
+    "numPeople": 1,
+    "status": "Further Assessment Needed",
+    "identifier": "5856229",
+    "latitude": 29.47548,
+    "longitude": -94.92513,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "DICKINSON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "GALVESTON" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "GALVESTON" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77539" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "aa6e571b02a4c53e3f1f3b91a9893f2938a94cba"
+      }
+    ]
+  },
+  {
+    "id": 588003,
+    "startTime": 1767982549000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767993349000,
+    "numPeople": 1,
+    "status": "Pending Assessment",
+    "identifier": "5856230",
+    "latitude": 29.82456,
+    "longitude": -95.19235,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "BAYTOWN" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77049" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "a330511a91e2008cd20f3f68cc2747e7a7b8f4c7"
+      }
+    ]
+  },
+  {
+    "id": 588027,
+    "startTime": 1767984113000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767998700000,
+    "numPeople": 1,
+    "status": "Planned Outage",
+    "cause": "Planned Outage",
+    "identifier": "5856256",
+    "latitude": 29.67482,
+    "longitude": -96.04054,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "WALLIS" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "FORT BEND" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "KATY" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77485" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "3b1cc245b6752fe976121ae71b7dfbe21b5346ec"
+      }
+    ]
+  },
+  {
+    "id": 588031,
+    "startTime": 1767984322000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767995122000,
+    "numPeople": 1,
+    "status": "Pending Assessment",
+    "identifier": "5856263",
+    "latitude": 29.71482,
+    "longitude": -95.63033,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "SUGAR LAND" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77082" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "1d284f8da680fda4e2f99cff92405eafbebb75fa"
+      }
+    ]
+  },
+  {
+    "id": 588032,
+    "startTime": 1767984327000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767990600000,
+    "numPeople": 1,
+    "status": "Pending Assessment",
+    "identifier": "5856264",
+    "latitude": 29.61555,
+    "longitude": -95.39844,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "SOUTH HOUSTON" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77047" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "ff5593a39e14f7a6374e88f6708ff52392d84f3a"
+      }
+    ]
+  },
+  {
+    "id": 588040,
+    "startTime": 1767984595000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767995395000,
+    "numPeople": 1,
+    "status": "Pending Assessment",
+    "identifier": "5856272",
+    "latitude": 29.98863,
+    "longitude": -95.61624,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "CYPRESS" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "CYPRESS" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77429" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "2950ba7f0e1ab8c066b1afaeca2d6f6598389751"
+      }
+    ]
+  },
+  {
+    "id": 588041,
+    "startTime": 1767984607000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767995407000,
+    "numPeople": 1,
+    "status": "Pending Assessment",
+    "identifier": "5856273",
+    "latitude": 29.79478,
+    "longitude": -95.24894,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "HARRISBURG" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77013" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "d6fbe81e4567fcf4563ec36410d68e3fbcc6f8fe"
+      }
+    ]
+  },
+  {
+    "id": 588057,
+    "startTime": 1767985010000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767991440000,
+    "numPeople": 1,
+    "status": "Crew Assessing",
+    "identifier": "5856294",
+    "latitude": 29.60747,
+    "longitude": -95.46702,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "SUGAR LAND" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77085" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "3d218e2b10c521fc10a289452812b355d67354cf"
+      }
+    ]
+  },
+  {
+    "id": 588066,
+    "startTime": 1767985517000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767996317000,
+    "numPeople": 1,
+    "status": "Pending Assessment",
+    "identifier": "5856305",
+    "latitude": 29.80076,
+    "longitude": -95.02558,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "BAYTOWN" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "BAYTOWN" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77521" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "30455fca7270597b6d95542d7ca9b6ba2aecd5d3"
+      }
+    ]
+  },
+  {
+    "id": 588071,
+    "startTime": 1767985659000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1768001640000,
+    "numPeople": 1,
+    "status": "Crew Assessing",
+    "identifier": "5856309",
+    "latitude": 30.02733,
+    "longitude": -95.52393,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "SPRING" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "GREENSPOINT" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77379" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "a6aabd0e6c532e60eecb8e6758c8e684f47c4bb9"
+      }
+    ]
+  },
+  {
+    "id": 588077,
+    "startTime": 1767986118000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767996918000,
+    "numPeople": 1,
+    "status": "Pending Assessment",
+    "identifier": "5856318",
+    "latitude": 29.84232,
+    "longitude": -95.53629,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "SPRING BRANCH" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77041" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "f0d9ba3496aa2a977d6b936af69e0477ad73feb8"
+      }
+    ]
+  },
+  {
+    "id": 588080,
+    "startTime": 1767986362000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767997162000,
+    "numPeople": 1,
+    "status": "Pending Assessment",
+    "identifier": "5856321",
+    "latitude": 29.72281,
+    "longitude": -95.54468,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "SUGAR LAND" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77042" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "2096952ea160152db5cac18ad8958ec7c5ad0745"
+      }
+    ]
+  },
+  {
+    "id": 588082,
+    "startTime": 1767986428000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767997228000,
+    "numPeople": 1,
+    "status": "Pending Assessment",
+    "identifier": "5856323",
+    "latitude": 30.06329,
+    "longitude": -95.53508,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "SPRING" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "GREENSPOINT" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77379" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "1168e2c1c138a2b888f37860f852b538043a5627"
+      }
+    ]
+  },
+  {
+    "id": 588093,
+    "startTime": 1767986972000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767997772000,
+    "numPeople": 1,
+    "status": "Pending Assessment",
+    "identifier": "5856335",
+    "latitude": 29.06122,
+    "longitude": -95.4402,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "LAKE JACKSON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "BRAZORIA" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "BRAZORIA" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77566" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "85f0ce542355ae460ded70644a7c28eb1ec57226"
+      }
+    ]
+  },
+  {
+    "id": 588094,
+    "startTime": 1767986982000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767997782000,
+    "numPeople": 1,
+    "status": "Pending Assessment",
+    "identifier": "5856336",
+    "latitude": 29.98675,
+    "longitude": -95.47884,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "GREENSPOINT" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77014" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "5be02f12eafc454b4fde58a8d84cafdc80206dca"
+      }
+    ]
+  },
+  {
+    "id": 588096,
+    "startTime": 1767987001000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767997801000,
+    "numPeople": 1,
+    "status": "Pending Assessment",
+    "identifier": "5856338",
+    "latitude": 29.83977,
+    "longitude": -95.35521,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "HARRISBURG" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77093" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "4440edf96679e6b2a73330aaad1305a72285bd1a"
+      }
+    ]
+  },
+  {
+    "id": 588098,
+    "startTime": 1767987035000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767997835000,
+    "numPeople": 1,
+    "status": "Pending Assessment",
+    "identifier": "5856340",
+    "latitude": 29.97518,
+    "longitude": -95.27444,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HUMBLE" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "HUMBLE" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77396" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "e610bbfb9292588c0cb1540b09b79458c2829bc5"
+      }
+    ]
+  },
+  {
+    "id": 588103,
+    "startTime": 1767987185000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767997985000,
+    "numPeople": 1,
+    "status": "Pending Assessment",
+    "identifier": "5856345",
+    "latitude": 29.71568,
+    "longitude": -95.58211,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "SUGAR LAND" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77072" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "c9eb275ce8cd3559235f94ead47103d613afe95e"
+      }
+    ]
+  },
+  {
+    "id": 588110,
+    "startTime": 1767987371000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767998171000,
+    "numPeople": 1,
+    "status": "Pending Assessment",
+    "identifier": "5856355",
+    "latitude": 29.77447,
+    "longitude": -95.62049,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "SPRING BRANCH" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77079" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "f46ecb9941bc7fbb56463104e7e62639128abf99"
+      }
+    ]
+  },
+  {
+    "id": 588113,
+    "startTime": 1767987518000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767998318000,
+    "numPeople": 1,
+    "status": "Pending Assessment",
+    "identifier": "5856358",
+    "latitude": 29.31584,
+    "longitude": -94.77224,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "GALVESTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "GALVESTON" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "GALVESTON" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77550" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "a43b033d91ccd565018fdb890a24c2af3313c725"
+      }
+    ]
+  },
+  {
+    "id": 588114,
+    "startTime": 1767987549000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767998349000,
+    "numPeople": 1,
+    "status": "Pending Assessment",
+    "identifier": "5856359",
+    "latitude": 29.69327,
+    "longitude": -95.28656,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "HARRISBURG" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77087" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "2a209c2c2a1ae569277311ee2665fe466683e3fa"
+      }
+    ]
+  },
+  {
+    "id": 588115,
+    "startTime": 1767987562000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767998362000,
+    "numPeople": 1,
+    "status": "Pending Assessment",
+    "identifier": "5856360",
+    "latitude": 30.12232,
+    "longitude": -95.4467,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "SPRING" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "MONTGOMERY" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "GREENSPOINT" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77380" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "944e0145d38010493033dd7b4271f26cb20d3825"
+      }
+    ]
+  },
+  {
+    "id": 588119,
+    "startTime": 1767987674000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767998474000,
+    "numPeople": 1,
+    "status": "Pending Assessment",
+    "identifier": "5856365",
+    "latitude": 29.43276,
+    "longitude": -95.39705,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "ROSHARON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "BRAZORIA" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "BRAZORIA" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77583" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "36d2a96c90177dbd090afdce5a89f07a88b8ebf1"
+      }
+    ]
+  },
+  {
+    "id": 588121,
+    "startTime": 1767987748000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767998548000,
+    "numPeople": 1,
+    "status": "Pending Assessment",
+    "identifier": "5856368",
+    "latitude": 29.87468,
+    "longitude": -95.15214,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "HUMBLE" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77044" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "987e1066f499473e57701c84850feaca08369996"
+      }
+    ]
+  },
+  {
+    "id": 588122,
+    "startTime": 1767987759000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767998559000,
+    "numPeople": 1,
+    "status": "Pending Assessment",
+    "identifier": "5856369",
+    "latitude": 29.26137,
+    "longitude": -94.84096,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "GALVESTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "GALVESTON" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "GALVESTON" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77551" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "e399cc9ea7312f0a161021ff1ab9a20a2d758dea"
+      }
+    ]
+  },
+  {
+    "id": 588123,
+    "startTime": 1767987820000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767998620000,
+    "numPeople": 1,
+    "status": "Pending Assessment",
+    "identifier": "5856370",
+    "latitude": 29.69357,
+    "longitude": -95.37535,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "HARRISBURG" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77021" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "edecf6c6b26be10b2ab93f30459093d960a6dffb"
+      }
+    ]
+  },
+  {
+    "id": 588124,
+    "startTime": 1767987846000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767998646000,
+    "numPeople": 1,
+    "status": "Pending Assessment",
+    "identifier": "5856371",
+    "latitude": 30.02296,
+    "longitude": -95.57435,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "TOMBALL" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "CYPRESS" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77375" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "fc7200486d7c8eda03a02df7316bf7c29e602ccd"
+      }
+    ]
+  },
+  {
+    "id": 588125,
+    "startTime": 1767987987000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767998787000,
+    "numPeople": 1,
+    "status": "Pending Assessment",
+    "identifier": "5856373",
+    "latitude": 29.81111,
+    "longitude": -95.40518,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "BELLAIRE" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77008" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "ee748b963c22a2ccdc5d9522c702815dfb286aab"
+      }
+    ]
+  },
+  {
+    "id": 588126,
+    "startTime": 1767988008000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767998808000,
+    "numPeople": 1,
+    "status": "Pending Assessment",
+    "identifier": "5856374",
+    "latitude": 29.79889,
+    "longitude": -95.38774,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "HARRISBURG" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77008" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "6556294551090da44108b75b417cd75c1c85d631"
+      }
+    ]
+  },
+  {
+    "id": 588127,
+    "startTime": 1767988028000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767998828000,
+    "numPeople": 1,
+    "status": "Pending Assessment",
+    "identifier": "5856375",
+    "latitude": 29.81845,
+    "longitude": -95.06584,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HIGHLANDS" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "BAYTOWN" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77562" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "f7aeeedb2419babcd2454168709d5c0211eaa9f9"
+      }
+    ]
+  },
+  {
+    "id": 588128,
+    "startTime": 1767988079000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767998879000,
+    "numPeople": 1,
+    "status": "Pending Assessment",
+    "identifier": "5856376",
+    "latitude": 29.82188,
+    "longitude": -95.75979,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "KATY" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "KATY" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77449" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "8755903e1c75197562993f7d9659346ac92b977d"
+      }
+    ]
+  },
+  {
+    "id": 588129,
+    "startTime": 1767988100000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767998900000,
+    "numPeople": 1,
+    "status": "Pending Assessment",
+    "identifier": "5856377",
+    "latitude": 29.83037,
+    "longitude": -95.26559,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "HARRISBURG" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77028" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "ee6377dbf6d0f23875dd6ba1b46438630a913550"
+      }
+    ]
+  },
+  {
+    "id": 588131,
+    "startTime": 1767988180000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767998980000,
+    "numPeople": 1,
+    "status": "Pending Assessment",
+    "identifier": "5856379",
+    "latitude": 30.27572,
+    "longitude": -95.60798,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "MONTGOMERY" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "MONTGOMERY" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "CYPRESS" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77316" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "5b2c9794b930c9b4389132d0287d31e65171ddb5"
+      }
+    ]
+  },
+  {
+    "id": 588133,
+    "startTime": 1767988260000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767999060000,
+    "numPeople": 1,
+    "status": "Pending Assessment",
+    "identifier": "5856381",
+    "latitude": 29.76762,
+    "longitude": -95.32685,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "HARRISBURG" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77020" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "1b9a26062d6716a3e67c14ee12dc67a351579307"
+      }
+    ]
+  },
+  {
+    "id": 588134,
+    "startTime": 1767988268000,
+    "lastUpdatedTime": 1767988335113,
+    "etrTime": 1767999068000,
+    "numPeople": 1,
+    "status": "Pending Assessment",
+    "identifier": "5856382",
+    "latitude": 29.76703,
+    "longitude": -95.32588,
+    "additionalProperties": [
+      {
+        "property": "AREA_CITY",
+        "value": [ "HOUSTON" ]
+      },
+      {
+        "property": "AREA_COUNTY",
+        "value": [ "HARRIS" ]
+      },
+      {
+        "property": "AREA_SERVICE",
+        "value": [ "HARRISBURG" ]
+      },
+      {
+        "property": "AREA_ZIP",
+        "value": [ "77020" ]
+      },
+      {
+        "property": "polygon",
+        "value": false
+      },
+      {
+        "property": "premise_hash",
+        "value": "ca12c5da6817cd65f3d36263d93717617383a7a9"
+      }
+    ]
+  }
+]

@@ -1,0 +1,11 @@
+/* make the page fill the viewport and remove default margins */
+html, body, #root {
+    height: 100%;
+    margin: 0;
+}
+
+/* make the map fill the screen */
+#map-container {
+    width: 100%;
+    height: 100%;
+}
