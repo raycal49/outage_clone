@@ -50,16 +50,6 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 });
 
-builder.Services.Configure<MapBoxOptions>(
-    builder.Configuration.GetSection("Mapbox"));
-builder.Services.AddTransient<MapBoxDirections>();
-
-
-builder.Services.AddHttpClient<IDirectionsService, DirectionsService>(client =>
-{
-    client.BaseAddress = new Uri("https://api.mapbox.com/directions/v5/mapbox/driving-traffic/");
-});
-
 builder.Services.AddHttpClient<IOutageService,OutageService>(client =>
 {
     client.BaseAddress = new Uri("https://centerpoint.datacapable.com/datacapable/v2/p/centerpoint/r/texas/map/events");
@@ -72,25 +62,6 @@ builder.Services.AddStackExchangeRedisCache(options =>
     options.Configuration = connectionString;
 });
 
-
-var mapboxSecret = builder.Configuration["Mapbox"];
-
-MapboxOptions token = new();
-
-builder.Services.AddOptions<MapboxOptions>()
-    .Bind(builder.Configuration)
-    .Validate(options => !string.IsNullOrEmpty(options.MapboxToken), "MapboxToken is missing from configuration!")
-    .ValidateOnStart();
-
-builder.Services.AddHttpClient("Mapbox", httpClient =>
-{
-    httpClient.BaseAddress = new Uri("https://api.mapbox.com");
-    httpClient.DefaultRequestHeaders.Accept.ParseAdd("application/json");
-})
-    .AddHttpMessageHandler<MapBoxDirections>();
-
-builder.Services.AddMapBoxGeocoding()
-    .AddKey("Mapbox");
 
 builder.Services.AddControllers().AddJsonOptions(o =>
 {
