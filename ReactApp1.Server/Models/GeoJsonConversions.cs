@@ -1,9 +1,6 @@
-﻿using System.Text.Json;
-using System.Text.Json.Serialization;
-using NetTopologySuite;
+﻿using NetTopologySuite;
 using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
-using NetTopologySuite.IO.Converters;
 using ReactApp1.Server.Dtos;
 
 namespace ReactApp1.Server.Models
@@ -12,6 +9,8 @@ namespace ReactApp1.Server.Models
     {
         public static FeatureCollection ConvertToFeatureCollection(List<OutageDataDto> dto)
         {
+            ArgumentNullException.ThrowIfNull(dto);
+
             var geoFactory = NtsGeometryServices.Instance.CreateGeometryFactory(srid: 4326);
 
             var featureCollection = new FeatureCollection();
@@ -28,9 +27,9 @@ namespace ReactApp1.Server.Models
                     { "etrTime", d.EtrTime },
                     { "numPeople", d.NumPeople },
                     { "status", d.Status },
-                    { "cause", d.Status },
+                    { "cause", d.Cause },
                     { "identifier", d.identifier },
-                    {"additionalPRoperties", d.AdditionalProperties }
+                    { "additionalProperties", d.AdditionalProperties }
                 };
 
                 featureCollection.Add(new Feature(geom, properties));
