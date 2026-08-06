@@ -6,9 +6,5 @@ namespace ReactApp1.Server.Models
     {
         public AppDbContext(DbContextOptions<AppDbContext> options)
             : base(options) { }
-
-        public DbSet<DirectionsResponseEntity> DirectionsResponseEntities { get; set;}
-
-        public DbSet<DisplayRouteEntity> DisplayRouteEntities { get; set;}
     }
 }

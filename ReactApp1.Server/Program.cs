@@ -1,17 +1,8 @@
-﻿using Azure.Identity;
-using Geo.Extensions.DependencyInjection;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
-using Microsoft.Net.Http.Headers;
-using  NetTopologySuite;
+﻿using Microsoft.EntityFrameworkCore;
 using NetTopologySuite.IO.Converters;
 using ReactApp1.Server.Infrastructure.Http;
 using ReactApp1.Server.Models;
-using StackExchange.Redis;
-using System.Collections.Immutable;
-using System.Runtime.Intrinsics;
 using System.Text.Json.Serialization;
-using static NetTopologySuite.Geometries.Utilities.GeometryMapper;
 
 var opts = new WebApplicationOptions
 {
@@ -21,7 +12,12 @@ var opts = new WebApplicationOptions
 };
 var builder = WebApplication.CreateBuilder(opts);
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(o =>
+{
+    o.JsonSerializerOptions.Converters.Add(new GeoJsonConverterFactory());
+    o.JsonSerializerOptions.NumberHandling = JsonNumberHandling.AllowNamedFloatingPointLiterals;
+    o.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+});
 builder.Services.AddProblemDetails();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -34,8 +30,6 @@ builder.Services.AddSwaggerGen(c =>
 var connString = builder.Configuration.GetConnectionString("DefaultConnection")
                  ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not configured.");
 
-Console.WriteLine($"[DEBUG] Using connection string: {connString}");
-
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseSqlServer(connString, o =>
@@ -44,10 +38,12 @@ builder.Services.AddDbContext<AppDbContext>(options =>
         o.EnableRetryOnFailure();
     });
 
-    options.EnableDetailedErrors();
-    options.EnableSensitiveDataLogging();
-    options.LogTo(Console.WriteLine);
-
+    if (builder.Environment.IsDevelopment())
+    {
+        options.EnableDetailedErrors();
+        options.EnableSensitiveDataLogging();
+        options.LogTo(Console.WriteLine);
+    }
 });
 
 builder.Services.AddHttpClient<IOutageService,OutageService>(client =>
@@ -63,12 +59,6 @@ builder.Services.AddStackExchangeRedisCache(options =>
 });
 
 
-builder.Services.AddControllers().AddJsonOptions(o =>
-{
-    o.JsonSerializerOptions.Converters.Add(new NetTopologySuite.IO.Converters.GeoJsonConverterFactory());
-    o.JsonSerializerOptions.NumberHandling = JsonNumberHandling.AllowNamedFloatingPointLiterals;
-    o.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
-});
 var app = builder.Build();
 
 app.UseDefaultFiles();
