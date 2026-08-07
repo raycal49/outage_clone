@@ -46,7 +46,12 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     }
 });
 
-builder.Services.AddHttpClient<IOutageService,OutageService>(client =>
+
+if (builder.Configuration.GetValue<bool>("Outages:UseFixture"))
+{
+    builder.Services.AddSingleton<IOutageService, FixtureOutageService>();
+}
+else builder.Services.AddHttpClient<IOutageService,OutageService>(client =>
 {
     client.BaseAddress = new Uri("https://centerpoint.datacapable.com/datacapable/v2/p/centerpoint/r/texas/map/events");
 });
