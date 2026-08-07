@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace OutageMap.Server.Models
+namespace OutageMap.Server.Infrastructure.Persistence
 {
     public class AppDbContext : DbContext
     {

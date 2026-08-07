@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.WebUtilities;
 using NetTopologySuite.Features;
-using OutageMap.Server.Dtos;
-using OutageMap.Server.Models;
 using System.Text.Json;
 
 namespace OutageMap.Server.Infrastructure.Http

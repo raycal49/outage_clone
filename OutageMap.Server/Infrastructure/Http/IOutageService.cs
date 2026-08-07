@@ -1,6 +1,4 @@
-﻿using OutageMap.Server.Dtos;
-
-namespace OutageMap.Server.Infrastructure.Http
+﻿namespace OutageMap.Server.Infrastructure.Http
 {
     public interface IOutageService
     {

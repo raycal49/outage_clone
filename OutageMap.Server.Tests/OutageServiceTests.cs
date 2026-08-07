@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Options;
-using OutageMap.Server.Dtos;
 using OutageMap.Server.Infrastructure.Http;
 using RichardSzalay.MockHttp;
 using System.Net;

@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NetTopologySuite.IO.Converters;
 using OutageMap.Server.Infrastructure.Http;
-using OutageMap.Server.Models;
+using OutageMap.Server.Infrastructure.Persistence;
 using System.Text.Json.Serialization;
 
 var opts = new WebApplicationOptions

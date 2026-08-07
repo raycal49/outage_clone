@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using OutageMap.Server.Infrastructure.Http;
 
-using static OutageMap.Server.Models.GeoJsonConversions;
+using static OutageMap.Server.Application.Outages.GeoJsonConversions;
 
-namespace OutageMap.Server.Controllers
+namespace OutageMap.Server.Api.Controllers
 {
     [Route("[controller]")]
     [ApiController]

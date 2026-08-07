@@ -1,9 +1,9 @@
 ﻿using NetTopologySuite;
 using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
-using OutageMap.Server.Dtos;
+using OutageMap.Server.Infrastructure.Http;
 
-namespace OutageMap.Server.Models
+namespace OutageMap.Server.Application.Outages
 {
     public static class GeoJsonConversions
     {

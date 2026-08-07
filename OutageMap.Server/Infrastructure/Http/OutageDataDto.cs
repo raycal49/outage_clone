@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace OutageMap.Server.Dtos
+namespace OutageMap.Server.Infrastructure.Http
 {
     public class OutageDataDto
     {
