@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NetTopologySuite.IO.Converters;
-using ReactApp1.Server.Infrastructure.Http;
-using ReactApp1.Server.Models;
+using OutageMap.Server.Infrastructure.Http;
+using OutageMap.Server.Models;
 using System.Text.Json.Serialization;
 
 var opts = new WebApplicationOptions

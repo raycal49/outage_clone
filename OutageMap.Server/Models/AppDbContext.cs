@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace ReactApp1.Server.Models
+namespace OutageMap.Server.Models
 {
     public class AppDbContext : DbContext
     {

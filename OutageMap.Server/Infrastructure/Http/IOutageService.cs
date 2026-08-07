@@ -1,6 +1,6 @@
-﻿using ReactApp1.Server.Dtos;
+﻿using OutageMap.Server.Dtos;
 
-namespace ReactApp1.Server.Infrastructure.Http
+namespace OutageMap.Server.Infrastructure.Http
 {
     public interface IOutageService
     {

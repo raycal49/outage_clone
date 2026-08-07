@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.WebUtilities;
 using NetTopologySuite.Features;
-using ReactApp1.Server.Dtos;
-using ReactApp1.Server.Models;
+using OutageMap.Server.Dtos;
+using OutageMap.Server.Models;
 using System.Text.Json;
 
-namespace ReactApp1.Server.Infrastructure.Http
+namespace OutageMap.Server.Infrastructure.Http
 {
     public class OutageService : IOutageService
     {

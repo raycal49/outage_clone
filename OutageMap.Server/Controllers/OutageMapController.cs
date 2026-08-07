@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ReactApp1.Server.Infrastructure.Http;
+using OutageMap.Server.Infrastructure.Http;
 
-using static ReactApp1.Server.Models.GeoJsonConversions;
+using static OutageMap.Server.Models.GeoJsonConversions;
 
-namespace ReactApp1.Server.Controllers
+namespace OutageMap.Server.Controllers
 {
     [Route("[controller]")]
     [ApiController]

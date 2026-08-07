@@ -1,9 +1,9 @@
 ﻿using NetTopologySuite;
 using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
-using ReactApp1.Server.Dtos;
+using OutageMap.Server.Dtos;
 
-namespace ReactApp1.Server.Models
+namespace OutageMap.Server.Models
 {
     public static class GeoJsonConversions
     {

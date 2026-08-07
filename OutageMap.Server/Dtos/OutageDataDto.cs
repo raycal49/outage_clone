@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace ReactApp1.Server.Dtos
+namespace OutageMap.Server.Dtos
 {
     public class OutageDataDto
     {

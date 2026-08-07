@@ -1,10 +1,10 @@
 ﻿using Microsoft.Extensions.Options;
-using ReactApp1.Server.Dtos;
-using ReactApp1.Server.Infrastructure.Http;
+using OutageMap.Server.Dtos;
+using OutageMap.Server.Infrastructure.Http;
 using RichardSzalay.MockHttp;
 using System.Net;
 
-namespace ReactApp1.Server.UnitTests
+namespace OutageMap.Server.Tests
 {
     public class OutageServiceTests
     {

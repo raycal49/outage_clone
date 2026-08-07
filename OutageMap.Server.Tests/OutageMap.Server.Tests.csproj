@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ReactApp1.Server\ReactApp1.Server.csproj" />
+    <ProjectReference Include="..\OutageMap.Server\OutageMap.Server.csproj" />
   </ItemGroup>
 
   <ItemGroup>
