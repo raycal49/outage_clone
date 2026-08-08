@@ -1,2 +1,0 @@
-# outage-map
-# outage-map
