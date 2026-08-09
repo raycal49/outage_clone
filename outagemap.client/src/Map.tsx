@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
-import Map, { FullscreenControl, GeolocateControl, NavigationControl, Source, Layer, Popup, type MapMouseEvent } from 'react-map-gl/mapbox';
+import Map, { FullscreenControl, GeolocateControl, NavigationControl, Source, Layer, Popup, type LayerProps, type MapMouseEvent } from 'react-map-gl/mapbox';
 import GeocoderControl from './Geocoder';
+import type { Feature, FeatureCollection, Point } from 'geojson';
 import './Map.css';
 
 const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
@@ -20,22 +21,22 @@ function MyMap() {
         etrTime?: number | string;
     };
 
-    type OutageFeature = GeoJSON.Feature<GeoJSON.Point, OutageProperties>;
+    type OutageFeature = Feature<Point, OutageProperties>;
 
     const [selectedOutage, setSelectedOutage] = useState<OutageFeature | null>(null);
     const [popupLngLat, setPopupLngLat] = useState<{ lng: number; lat: number } | null>(null);
-    const [outageFc, setOutageFc] = useState<GeoJSON.FeatureCollection<GeoJSON.Point> | null>(null);
+    const [outageFc, setOutageFc] = useState<FeatureCollection<Point> | null>(null);
 
     useEffect(() => {
         (async () => {
             const res = await fetch("/OutageMap/OutageData");
             if (!res.ok) throw new Error(`OutageData failed (${res.status})`);
-            const fc = await res.json();
+            const fc: FeatureCollection<Point> = await res.json();
             setOutageFc(fc);
         })().catch(console.error);
     }, []);
 
-    const outageLayer: any = {
+    const outageLayer = {
         id: "outage-points",
         type: "circle",
         paint: {
@@ -53,7 +54,7 @@ function MyMap() {
                 "#10b981"
             ]
         }
-    };
+    } satisfies LayerProps;
 
     const handleMapClick = (e: MapMouseEvent) => {
 
