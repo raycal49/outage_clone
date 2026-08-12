@@ -54,7 +54,7 @@ export default function GeocoderControl(props: GeocoderControlProps): React.Reac
         }
     );
 
-    if (geocoder._map) {
+    if ((geocoder as unknown as { _map?: unknown })._map) {
         if (geocoder.getProximity() !== props.proximity && props.proximity !== undefined) {
             geocoder.setProximity(props.proximity);
         }

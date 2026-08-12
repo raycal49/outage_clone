@@ -368,5 +368,4 @@ FodyWeavers.xsd
 
 #secrets and appsettings
 secrets.json
-appsettings.json
 appsettings.Development.json
