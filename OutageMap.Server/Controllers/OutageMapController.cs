@@ -2,8 +2,6 @@
 using NetTopologySuite.Features;
 using OutageMap.Server.Infrastructure.Http;
 
-using static OutageMap.Server.Dtos.OutageDtoToEntity;
-
 namespace OutageMap.Server.Controllers;
 
 [Route("[controller]")]

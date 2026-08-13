@@ -2,7 +2,7 @@
 using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
 
-namespace OutageMap.Server.Dtos.Conversions;
+namespace OutageMap.Server.Dtos.Mappers;
 
 public static class OutageDtoToGeojson
 {
