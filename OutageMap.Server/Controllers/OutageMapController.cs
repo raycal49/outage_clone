@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using NetTopologySuite.Features;
 using OutageMap.Server.Infrastructure.Http;
 
-using static OutageMap.Server.Models.GeoJsonConversions;
+using static OutageMap.Server.Dtos.OutageDtoToEntity;
 
 namespace OutageMap.Server.Controllers;
 
@@ -9,9 +10,9 @@ namespace OutageMap.Server.Controllers;
 [ApiController]
 public class OutageMapController : ControllerBase
 {
-    private readonly IOutageService _outageService;
+    private readonly IOutageSource _outageService;
 
-    public OutageMapController(IOutageService outageService)
+    public OutageMapController(IOutageSource outageService)
     {
         _outageService = outageService;
     }
@@ -19,11 +20,11 @@ public class OutageMapController : ControllerBase
     [HttpGet("OutageData")]
     public async Task<ActionResult> GetOutageData()
     {
-        var outageDto = await _outageService.GetOutageData();
+        //var outageDto = await _outageService.GetOutageData();
 
-        var outageGeoJson = ConvertToFeatureCollection(outageDto);
+        //var outageGeoJson = ConvertToFeatureCollection(outageDto);
 
-        return Ok(outageGeoJson);
+        return Ok(new FeatureCollection());
     }
 
 }

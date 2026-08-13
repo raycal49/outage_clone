@@ -2,6 +2,7 @@
 using NetTopologySuite.IO.Converters;
 using OutageMap.Server.Infrastructure.Http;
 using OutageMap.Server.Models;
+using Services.BackgroundServices;
 using System.Text.Json.Serialization;
 
 var opts = new WebApplicationOptions
@@ -47,14 +48,16 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 });
 
 
-if (builder.Configuration.GetValue<bool>("Outages:UseFixture"))
-{
-    builder.Services.AddSingleton<IOutageService, FixtureOutageService>();
-}
-else builder.Services.AddHttpClient<IOutageService,OutageService>(client =>
+//if (builder.Configuration.GetValue<bool>("Outages:UseFixture"))
+//{
+//    builder.Services.AddSingleton<IOutageSource, FixtureOutageService>();
+//}
+builder.Services.AddHttpClient<IOutageSource,PollOutageSource>(client =>
 {
     client.BaseAddress = new Uri("https://centerpoint.datacapable.com/datacapable/v2/p/centerpoint/r/texas/map/events");
 });
+
+builder.Services.AddHostedService<OutagePoller>();
 
 string connectionString = builder.Configuration.GetConnectionString("Redis");
 
