@@ -1,13 +1,13 @@
 ﻿using NetTopologySuite;
 using NetTopologySuite.Geometries;
 
-namespace OutageMap.Server.Dtos;
+namespace OutageMap.Server.Dtos.Conversions;
 
 public static class OutageDtoToEntity
 {
     private static readonly GeometryFactory GeometryFactory = NtsGeometryServices.Instance.CreateGeometryFactory(srid: 4326);
 
-    public static Outage? ConvertToOutage(OutageDto dto)
+    public static OutageEntity? ConvertToOutage(OutageDto dto)
     {
         if (dto.Id <= 0 || string.IsNullOrWhiteSpace(dto.Status))
             return null;
@@ -19,9 +19,9 @@ public static class OutageDtoToEntity
         return outage;
     }
 
-    private static Outage CreateOutage(OutageDto dto,DateTimeOffset now)
+    private static OutageEntity CreateOutage(OutageDto dto,DateTimeOffset now)
     {
-        return new Outage
+        return new OutageEntity
         {
             SourceId = dto.Id,
             StartTime = DateTimeOffset.FromUnixTimeMilliseconds(dto.StartTime),
@@ -36,7 +36,7 @@ public static class OutageDtoToEntity
         };
     }
 
-    private static void SetAreaProperties(Outage outage, OutageDto dto)
+    private static void SetAreaProperties(OutageEntity outage, OutageDto dto)
     {
         outage.City = GetAreaValue(dto, "AREA_CITY");
         outage.County = GetAreaValue(dto, "AREA_COUNTY");
