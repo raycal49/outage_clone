@@ -1,5 +1,8 @@
-﻿using OutageMap.Server.Dtos;
+﻿using Microsoft.AspNetCore.SignalR;
+using OutageMap.Server.Dtos;
+using OutageMap.Server.Hubs;
 using OutageMap.Server.Infrastructure.Http;
+using OutageMap.Server.Services;
 using System.Text.Json;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -10,6 +13,7 @@ public class OutagePoller : BackgroundService
     private readonly TimeSpan _period = TimeSpan.FromMinutes(10);
     private readonly ILogger<OutagePoller> _logger;
     private readonly IServiceProvider _serviceProvider;
+    private readonly IHubContext<OutageHub> _hub;
 
     public OutagePoller(ILogger<OutagePoller> logger, IServiceProvider service)
     {
@@ -25,48 +29,36 @@ public class OutagePoller : BackgroundService
 
         _logger.LogInformation("Starting outage polling");
 
-        // this line actually yields List<OutageDto> and so we should capture it, examine it, and compare it with what we have in our EF Core 
-        var outages = await PollAsync(++timesPolled);
-
-        //
-        // do comparison here and have a conditional based off of if we have new rows or not
-        //
-        // run CheckIfNewOutagePoints
-        //
-        // if we do not have new rows, we will NOT run the below StoreOutagePoints function and will just wait until next poll, where we will check again
-        // if we do have new rows, we will run the below StoreOutagePoints function
-        //
-        // run StoreOutagePoints function here
-        //
+        await SyncAsync(++timesPolled, stoppingToken);
 
         while (await timer.WaitForNextTickAsync(stoppingToken))
         {
-            await PollAsync(++timesPolled);
+            await SyncAsync(++timesPolled, stoppingToken);
         }
     }
 
-    private async Task<List<OutageDto>> PollAsync(int timesPolled)
+    private async Task SyncAsync(int timesPolled, CancellationToken stoppingToken)
     {
-        using IServiceScope scope = _serviceProvider.CreateScope();
+        try
+        {
+            using IServiceScope scope = _serviceProvider.CreateScope();
 
-        IOutageSource source =
-            scope.ServiceProvider.GetRequiredService<IOutageSource>();
+            OutageSyncService syncService = scope.ServiceProvider.GetRequiredService<OutageSyncService>();
+            OutageSyncResult result = await syncService.SyncOutages(stoppingToken);
 
-        List<OutageDto> outages = await source.GetOutageData();
+            _logger.LogInformation(
+                "Poll #{TimesPolled}. Added: {Added}, Updated: {Updated}, Deactivated: {Deactivated}",
+                timesPolled,
+                result.Added,
+                result.Updated,
+                result.Deactivated);
 
-        _logger.LogInformation(
-            "Poll #{TimesPolled} at {Timestamp}. Outages: {Count}\n{Data}",
-            timesPolled,
-            DateTimeOffset.Now,
-            outages.Count,
-            JsonSerializer.Serialize(
-                outages,
-                new JsonSerializerOptions { WriteIndented = true }));
-
-        return outages;
+            if (result.HasChanges)
+                await _hub.Clients.All.SendAsync("OutagesChanged", cancellationToken: stoppingToken);
+        }
+        catch (Exception ex) when (!stoppingToken.IsCancellationRequested)
+        {
+            _logger.LogError(ex, "Outage poll #{TimesPolled} failed.", timesPolled);
+        }
     }
-
-    // CheckIfNewOutagePoints
-
-    // StoreNewOutagePoints
 }

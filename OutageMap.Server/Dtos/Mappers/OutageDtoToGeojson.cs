@@ -1,41 +1,32 @@
-﻿using NetTopologySuite;
-using NetTopologySuite.Features;
-using NetTopologySuite.Geometries;
+﻿using NetTopologySuite.Features;
 
-namespace OutageMap.Server.Dtos.Mappers;
+namespace OutageMap.Server.Models.Mappers;
 
-public static class OutageDtoToGeojson
+public static class OutageEntityToGeojson
 {
-    public static FeatureCollection ConvertToFeatureCollection(List<OutageDto> dto)
+    public static FeatureCollection ConvertToFeatureCollection(List<OutageEntity> outages)
     {
-        ArgumentNullException.ThrowIfNull(dto);
-
-        var geoFactory = NtsGeometryServices.Instance.CreateGeometryFactory(srid: 4326);
-
         var featureCollection = new FeatureCollection();
 
-        foreach (var d in dto)
+        foreach (OutageEntity outage in outages)
         {
-            var geom = geoFactory.CreatePoint(new Coordinate(d.Longitude, d.Latitude));
+            AttributesTable properties = new()
+            {
+                { "id", outage.SourceId },
+                { "startTime", outage.StartTime.ToUnixTimeMilliseconds() },
+                { "etrTime", outage.EstimatedRestorationTime?.ToUnixTimeMilliseconds() },
+                { "numPeople", outage.CustomersAffected },
+                { "status", outage.Status },
+                { "cause", outage.Cause },
+                { "city", outage.City },
+                { "county", outage.County },
+                { "serviceArea", outage.ServiceArea },
+                { "zipCode", outage.ZipCode }
+            };
 
-            var properties = new AttributesTable
-                {
-                    { "id", d.Id },
-                    { "startTime", d.StartTime },
-                    { "lastUpdatedTime", d.LastUpdatedTime },
-                    { "etrTime", d.EtrTime },
-                    { "numPeople", d.NumPeople },
-                    { "status", d.Status },
-                    { "cause", d.Cause },
-                    { "identifier", d.Identifier },
-                    { "additionalProperties", d.AdditionalProperties }
-                };
-
-            featureCollection.Add(new Feature(geom, properties));
-
+            featureCollection.Add(new Feature(outage.Location, properties));
         }
 
         return featureCollection;
     }
-
 }

@@ -2,6 +2,7 @@
 using NetTopologySuite.IO.Converters;
 using OutageMap.Server.Hubs;
 using OutageMap.Server.Infrastructure.Http;
+using OutageMap.Server.Services;
 using OutageMap.Server.Models;
 using Services.BackgroundServices;
 using System.Text.Json.Serialization;
@@ -55,6 +56,9 @@ builder.Services.AddHttpClient<IOutageSource,PollOutageSource>(client =>
 });
 
 builder.Services.AddHostedService<OutagePoller>();
+builder.Services.AddSignalR();
+
+builder.Services.AddScoped<IOutageReader, OutageReader>();
 
 string connectionString = builder.Configuration.GetConnectionString("Redis");
 
@@ -79,15 +83,12 @@ if (app.Environment.IsDevelopment())
     app.UseDeveloperExceptionPage();
 }
 
-builder.Services.AddSignalR();
-
-app.MapHub<OutageHub>("/outageHub");
-
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapHub<OutageHub>("/outageHub");
 
 app.MapFallbackToFile("/index.html");
 
