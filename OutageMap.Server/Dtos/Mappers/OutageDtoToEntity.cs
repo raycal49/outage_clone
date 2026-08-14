@@ -1,7 +1,8 @@
 ﻿using NetTopologySuite;
 using NetTopologySuite.Geometries;
+using OutageMap.Server.Models;
 
-namespace OutageMap.Server.Dtos.Conversions;
+namespace OutageMap.Server.Dtos.Mappers;
 
 public static class OutageDtoToEntity
 {
@@ -31,8 +32,6 @@ public static class OutageDtoToEntity
             Cause = dto.Cause,
             Location = GeometryFactory.CreatePoint(new Coordinate(dto.Longitude, dto.Latitude)),
             IsActive = true,
-            FirstSeenAt = now,
-            LastChangedAt = now
         };
     }
 

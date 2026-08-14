@@ -36,11 +36,11 @@ public class OutageDto
     public string? Identifier { get; set; }
 
     [JsonPropertyName("additionalProperties")]
-    public List<Properties>? AdditionalProperties { get; set; }
+    public List<OutageProperties>? AdditionalProperties { get; set; }
 
 }
 
-public sealed class Properties
+public sealed class OutageProperties
 {
     [JsonPropertyName("property")]
     public string? Property { get; init; }

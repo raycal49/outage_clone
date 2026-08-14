@@ -25,8 +25,19 @@ public class OutagePoller : BackgroundService
 
         _logger.LogInformation("Starting outage polling");
 
-        // this line actually yields List<OutageDto> and so we should capture it, examine it, and compare it with what we have in our EF Core db
-        await PollAsync(++timesPolled);
+        // this line actually yields List<OutageDto> and so we should capture it, examine it, and compare it with what we have in our EF Core 
+        var outages = await PollAsync(++timesPolled);
+
+        //
+        // do comparison here and have a conditional based off of if we have new rows or not
+        //
+        // run CheckIfNewOutagePoints
+        //
+        // if we do not have new rows, we will NOT run the below StoreOutagePoints function and will just wait until next poll, where we will check again
+        // if we do have new rows, we will run the below StoreOutagePoints function
+        //
+        // run StoreOutagePoints function here
+        //
 
         while (await timer.WaitForNextTickAsync(stoppingToken))
         {
@@ -34,23 +45,25 @@ public class OutagePoller : BackgroundService
         }
     }
 
-    private async Task PollAsync(int timesPolled)
+    private async Task<List<OutageDto>> PollAsync(int timesPolled)
     {
         using IServiceScope scope = _serviceProvider.CreateScope();
 
         IOutageSource source =
             scope.ServiceProvider.GetRequiredService<IOutageSource>();
 
-        List<OutageDto> data = await source.GetOutageData();
+        List<OutageDto> outages = await source.GetOutageData();
 
         _logger.LogInformation(
             "Poll #{TimesPolled} at {Timestamp}. Outages: {Count}\n{Data}",
             timesPolled,
             DateTimeOffset.Now,
-            data.Count,
+            outages.Count,
             JsonSerializer.Serialize(
-                data,
+                outages,
                 new JsonSerializerOptions { WriteIndented = true }));
+
+        return outages;
     }
 
     // CheckIfNewOutagePoints

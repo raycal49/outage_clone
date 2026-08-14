@@ -1,5 +1,6 @@
 ﻿using NetTopologySuite.Geometries;
 
+namespace OutageMap.Server.Models;
 public sealed class OutageEntity
 {
     public long Id { get; set; }
@@ -20,8 +21,5 @@ public sealed class OutageEntity
     public string? ZipCode { get; set; }
 
     public bool IsActive { get; set; }
-
-    public DateTimeOffset FirstSeenAt { get; set; }
-    public DateTimeOffset LastChangedAt { get; set; }
     public DateTimeOffset? ResolvedAt { get; set; }
 }

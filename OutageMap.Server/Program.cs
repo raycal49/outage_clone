@@ -48,10 +48,6 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 });
 
 
-//if (builder.Configuration.GetValue<bool>("Outages:UseFixture"))
-//{
-//    builder.Services.AddSingleton<IOutageSource, FixtureOutageService>();
-//}
 builder.Services.AddHttpClient<IOutageSource,PollOutageSource>(client =>
 {
     client.BaseAddress = new Uri("https://centerpoint.datacapable.com/datacapable/v2/p/centerpoint/r/texas/map/events");
@@ -65,7 +61,6 @@ builder.Services.AddStackExchangeRedisCache(options =>
 {
     options.Configuration = connectionString;
 });
-
 
 var app = builder.Build();
 
@@ -82,6 +77,10 @@ if (app.Environment.IsDevelopment())
 
     app.UseDeveloperExceptionPage();
 }
+
+builder.Services.AddSignalR();
+
+app.MapHub<OutageHub>("/outageHub");
 
 app.UseHttpsRedirection();
 
