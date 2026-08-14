@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NetTopologySuite.IO.Converters;
+using OutageMap.Server.Hubs;
 using OutageMap.Server.Infrastructure.Http;
 using OutageMap.Server.Models;
 using Services.BackgroundServices;
