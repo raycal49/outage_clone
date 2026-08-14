@@ -15,10 +15,11 @@ public class OutagePoller : BackgroundService
     private readonly IServiceProvider _serviceProvider;
     private readonly IHubContext<OutageHub> _hub;
 
-    public OutagePoller(ILogger<OutagePoller> logger, IServiceProvider service)
+    public OutagePoller(ILogger<OutagePoller> logger, IServiceProvider service, IHubContext hub)
     {
         _logger = logger;
         _serviceProvider = service;
+        _hub = hub;
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)

@@ -57,7 +57,7 @@ builder.Services.AddHttpClient<IOutageSource,PollOutageSource>(client =>
 
 builder.Services.AddHostedService<OutagePoller>();
 builder.Services.AddSignalR();
-
+builder.Services.AddScoped<OutageSyncService>();
 builder.Services.AddScoped<IOutageReader, OutageReader>();
 
 string connectionString = builder.Configuration.GetConnectionString("Redis");
