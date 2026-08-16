@@ -51,7 +51,7 @@ public class OutagePoller : BackgroundService
 
             OutageSyncService syncService = scope.ServiceProvider.GetRequiredService<OutageSyncService>();
 
-            OutageSyncResult result = await syncService.SyncOutages(outages, stoppingToken);
+            OutageSyncResult result = await syncService.SyncStoredOutages(outages, stoppingToken);
 
             _logger.LogInformation(
                 "Poll #{TimesPolled}. Added: {Added}, Updated: {Updated}, Deactivated: {Deactivated}",

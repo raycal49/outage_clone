@@ -32,8 +32,7 @@ public sealed class SqlServerFixture : IAsyncLifetime
     {
         AppDbContext db = CreateContext();
 
-        // Each test gets its own transaction.
-        // Disposing the context rolls it back.
+        // Each test gets its own transaction. Disposing the context rolls it back.
         db.Database.BeginTransaction();
 
         return db;

@@ -42,27 +42,13 @@ public abstract class OutageSyncTestBase : IDisposable
         };
     }
 
-    protected async Task Store(params OutageDto[] outages)
+    protected async Task InsertIntoDb(params OutageDto[] outages)
     {
         var entities = outages
             .Select(OutageDtoToEntity.ConvertToOutage)
             .Select(x => x!);
 
         _db.Outages.AddRange(entities);
-
-        await _db.SaveChangesAsync(TestContext.Current.CancellationToken);
-
-        _db.ChangeTracker.Clear();
-    }
-
-    protected async Task StoreResolved(OutageDto outage)
-    {
-        OutageEntity entity = OutageDtoToEntity.ConvertToOutage(outage)!;
-
-        entity.IsActive = false;
-        entity.ResolvedAt = DateTimeOffset.UtcNow.AddHours(-1);
-
-        _db.Outages.Add(entity);
 
         await _db.SaveChangesAsync(TestContext.Current.CancellationToken);
 
@@ -92,7 +78,6 @@ public abstract class OutageSyncTestBase : IDisposable
 
     public void Dispose()
     {
-        // Also rolls back this test's transaction.
         _db.Dispose();
     }
 }  

@@ -8,27 +8,25 @@ public sealed class OutageSyncServiceDbTests : OutageSyncTestBase, IClassFixture
     {
     }
 
-    // seriously considering renaming SyncOutages to something like ApplySnapshotToStoredOutages or something like that
     [Fact]
-    public async Task SyncOutages_NewOutagesExistInSnapshot_AddsOutages()
+    public async Task SyncStoredOutages_NewOutagesExistInSnapshot_AddsNewOutages()
     {
-        // i definitely think this being apply screenshots or something or apply updates solves a good chunk of our issues
-        await Service.SyncOutages(
+        await Service.SyncStoredOutages(
             [Outage(1001), Outage(1002)],
             TestContext.Current.CancellationToken);
 
-        var outagesStoredInDb = await AllOutages();
+        var storedOutages = await AllOutages();
 
-        Assert.Contains(outagesStoredInDb, x => x.SourceId == 1001 && x.IsActive);
-        Assert.Contains(outagesStoredInDb, x => x.SourceId == 1002 && x.IsActive);
+        Assert.Contains(storedOutages, x => x.SourceId == 1001 && x.IsActive);
+        Assert.Contains(storedOutages, x => x.SourceId == 1002 && x.IsActive);
     }
 
     [Fact]
-    public async Task SyncOutages_ExistingOutageHasChanged_UpdatesOutage()
+    public async Task SyncStoredOutages_ExistingOutageHasChanged_UpdatesOutage()
     {
-        await Store(Outage(1001, customersAffected: 20, status: "Pending Assessment", cause: "Planned Outage"));
+        await InsertIntoDb(Outage(1001, customersAffected: 20, status: "Pending Assessment", cause: "Planned Outage"));
 
-        await Service.SyncOutages(
+        await Service.SyncStoredOutages(
             [Outage(1001, customersAffected: 500, status: "Crew dispatched", cause: "Weather")],
             TestContext.Current.CancellationToken);
 
@@ -41,11 +39,11 @@ public sealed class OutageSyncServiceDbTests : OutageSyncTestBase, IClassFixture
     }
 
     [Fact]
-    public async Task SyncOutages_ActiveOutageNotInLatestSnapshot_DeactivateOutage()
+    public async Task SyncStoredOutages_ActiveOutageNotInLatestSnapshot_DeactivateOutage()
     {
-        await Store(Outage(1001), Outage(2002));
+        await InsertIntoDb(Outage(1001), Outage(2002));
 
-        await Service.SyncOutages(
+        await Service.SyncStoredOutages(
             [Outage(2002)],
             TestContext.Current.CancellationToken);
 
@@ -58,11 +56,11 @@ public sealed class OutageSyncServiceDbTests : OutageSyncTestBase, IClassFixture
     }
 
     [Fact]
-    public async Task SyncOutages_SnapshotMatchesStoredOutages_DoesNothing()
+    public async Task SyncStoredOutages_SnapshotMatchesStoredOutages_DoesNothing()
     {
-        await Store(Outage(1001));
+        await InsertIntoDb(Outage(1001));
 
-        var result = await Service.SyncOutages(
+        var result = await Service.SyncStoredOutages(
             [Outage(1001)],
             TestContext.Current.CancellationToken);
 

@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OutageMap.Server.Dtos;
 using OutageMap.Server.Dtos.Mappers;
-using OutageMap.Server.Infrastructure.Http;
 using OutageMap.Server.Models;
 
 namespace OutageMap.Server.Services;
@@ -15,8 +14,7 @@ public sealed class OutageSyncService
         _db = db;
     }
 
-    // this validation shouldn't even be in here. it should be in OutagePoller
-    public async Task<OutageSyncResult> SyncOutages(List<OutageDto> outages, CancellationToken cancellationToken)
+    public async Task<OutageSyncResult> SyncStoredOutages(List<OutageDto> outages, CancellationToken cancellationToken)
     {
         long[] sourceIds = outages.Select(x => x.Id).ToArray();
 
