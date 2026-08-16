@@ -8,13 +8,11 @@ namespace OutageMap.Server.Services;
 
 public sealed class OutageSyncService
 {
-    private readonly IOutageSource _source;
     private readonly AppDbContext _db;
     private readonly ILogger<OutageSyncService> _logger;
 
-    public OutageSyncService(IOutageSource source, AppDbContext db, ILogger<OutageSyncService> logger)
+    public OutageSyncService(AppDbContext db, ILogger<OutageSyncService> logger)
     {
-        _source = source;
         _db = db;
         _logger = logger;
     }
