@@ -30,8 +30,6 @@ namespace OutageMap.Server.Migrations
                     ServiceArea = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ZipCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    FirstSeenAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
-                    LastChangedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
                     ResolvedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true)
                 },
                 constraints: table =>

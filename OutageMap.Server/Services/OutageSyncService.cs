@@ -19,10 +19,8 @@ public sealed class OutageSyncService
         _logger = logger;
     }
 
-    public async Task<OutageSyncResult> SyncOutages(CancellationToken cancellationToken)
+    public async Task<OutageSyncResult> SyncOutages(List<OutageDto> outages, CancellationToken cancellationToken)
     {
-        List<OutageDto> outages = await _source.GetOutageData();
-
         OutageValidator.Validate(outages);
 
         long[] sourceIds = outages.Select(x => x.Id).ToArray();

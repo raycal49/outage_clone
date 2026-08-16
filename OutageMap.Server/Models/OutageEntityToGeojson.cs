@@ -1,6 +1,6 @@
 ﻿using NetTopologySuite.Features;
 
-namespace OutageMap.Server.Models.Mappers;
+namespace OutageMap.Server.Models;
 
 public static class OutageEntityToGeojson
 {

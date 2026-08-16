@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NetTopologySuite.Features;
 using OutageMap.Server.Models;
-using OutageMap.Server.Models.Mappers;
 
 namespace OutageMap.Server.Services;
 

@@ -30,22 +30,29 @@ public class OutagePoller : BackgroundService
 
         _logger.LogInformation("Starting outage polling");
 
-        await SyncAsync(++timesPolled, stoppingToken);
+        await PollAsync(++timesPolled, stoppingToken);
 
         while (await timer.WaitForNextTickAsync(stoppingToken))
         {
-            await SyncAsync(++timesPolled, stoppingToken);
+            await PollAsync(++timesPolled, stoppingToken);
         }
     }
 
-    private async Task SyncAsync(int timesPolled, CancellationToken stoppingToken)
+    private async Task PollAsync(int timesPolled, CancellationToken stoppingToken)
     {
         try
         {
             using IServiceScope scope = _serviceProvider.CreateScope();
 
+            IOutageSource source =
+                scope.ServiceProvider
+                    .GetRequiredService<IOutageSource>();
+
+            var outages = await source.GetOutageData();
+
             OutageSyncService syncService = scope.ServiceProvider.GetRequiredService<OutageSyncService>();
-            OutageSyncResult result = await syncService.SyncOutages(stoppingToken);
+
+            OutageSyncResult result = await syncService.SyncOutages(outages, stoppingToken);
 
             _logger.LogInformation(
                 "Poll #{TimesPolled}. Added: {Added}, Updated: {Updated}, Deactivated: {Deactivated}",

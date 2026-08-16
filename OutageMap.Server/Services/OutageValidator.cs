@@ -27,7 +27,6 @@ public static class OutageValidator
 
     private static bool HasInvalidTime(OutageDto outage) =>
         outage.StartTime <= 0 ||
-        outage.EtrTime is null ||
         outage.EtrTime <= 0;
 
     private static bool HasInvalidState(OutageDto outage) =>

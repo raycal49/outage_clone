@@ -45,7 +45,6 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     {
         options.EnableDetailedErrors();
         options.EnableSensitiveDataLogging();
-        options.LogTo(Console.WriteLine);
     }
 });
 

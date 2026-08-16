@@ -16,7 +16,14 @@ public static class OutageUpdater
         if (!NeedsUpdate(dto, storedOutage))
             return false;
 
-        storedOutage.EstimatedRestorationTime = DateTimeOffset.FromUnixTimeMilliseconds(dto.EtrTime!.Value);
+        DateTimeOffset? dtoEtr;
+
+        if (dto.EtrTime != null)
+            dtoEtr = DateTimeOffset.FromUnixTimeMilliseconds(dto.EtrTime.Value);
+        else
+            dtoEtr = null;
+
+        storedOutage.EstimatedRestorationTime = dtoEtr;
         storedOutage.CustomersAffected = dto.NumPeople;
         storedOutage.Status = dto.Status!;
         storedOutage.Cause = dto.Cause;
@@ -27,7 +34,12 @@ public static class OutageUpdater
 
     private static bool NeedsUpdate(OutageDto dto, OutageEntity storedOutage)
     {
-        DateTimeOffset? dtoEtr = DateTimeOffset.FromUnixTimeMilliseconds(dto.EtrTime!.Value);
+        DateTimeOffset? dtoEtr;
+
+        if (dto.EtrTime != null)
+            dtoEtr = DateTimeOffset.FromUnixTimeMilliseconds(dto.EtrTime!.Value);
+        else
+            dtoEtr = null;
 
         Point dtoLocation = GeometryFactory.CreatePoint(new Coordinate(dto.Longitude, dto.Latitude));
 

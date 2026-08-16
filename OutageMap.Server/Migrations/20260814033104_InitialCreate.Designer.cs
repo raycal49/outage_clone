@@ -13,7 +13,7 @@ using OutageMap.Server.Models;
 namespace OutageMap.Server.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260813014607_InitialCreate")]
+    [Migration("20260814033104_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -26,7 +26,7 @@ namespace OutageMap.Server.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("OutageEntity", b =>
+            modelBuilder.Entity("OutageMap.Server.Models.OutageEntity", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -49,14 +49,8 @@ namespace OutageMap.Server.Migrations
                     b.Property<DateTimeOffset?>("EstimatedRestorationTime")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<DateTimeOffset>("FirstSeenAt")
-                        .HasColumnType("datetimeoffset");
-
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
-
-                    b.Property<DateTimeOffset>("LastChangedAt")
-                        .HasColumnType("datetimeoffset");
 
                     b.Property<Point>("Location")
                         .IsRequired()
