@@ -1,10 +1,7 @@
 ﻿using Microsoft.AspNetCore.SignalR;
-using OutageMap.Server.Dtos;
 using OutageMap.Server.Hubs;
 using OutageMap.Server.Infrastructure.Http;
 using OutageMap.Server.Services;
-using System.Text.Json;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Services.BackgroundServices;
 
@@ -49,6 +46,8 @@ public class OutagePoller : BackgroundService
                     .GetRequiredService<IOutageSource>();
 
             var outages = await source.GetOutageData();
+
+            OutageValidator.Validate(outages);
 
             OutageSyncService syncService = scope.ServiceProvider.GetRequiredService<OutageSyncService>();
 

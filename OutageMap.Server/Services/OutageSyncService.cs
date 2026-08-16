@@ -9,22 +9,19 @@ namespace OutageMap.Server.Services;
 public sealed class OutageSyncService
 {
     private readonly AppDbContext _db;
-    private readonly ILogger<OutageSyncService> _logger;
 
-    public OutageSyncService(AppDbContext db, ILogger<OutageSyncService> logger)
+    public OutageSyncService(AppDbContext db)
     {
         _db = db;
-        _logger = logger;
     }
 
+    // this validation shouldn't even be in here. it should be in OutagePoller
     public async Task<OutageSyncResult> SyncOutages(List<OutageDto> outages, CancellationToken cancellationToken)
     {
-        OutageValidator.Validate(outages);
-
         long[] sourceIds = outages.Select(x => x.Id).ToArray();
 
         Dictionary<long, OutageEntity> stored = await _db.Outages
-            .Where(x => x.IsActive || sourceIds.Contains(x.SourceId))
+            .Where(x => x.IsActive)
             .ToDictionaryAsync(x => x.SourceId, cancellationToken);
 
         DateTimeOffset now = DateTimeOffset.UtcNow;
@@ -43,15 +40,6 @@ public sealed class OutageSyncService
             }
 
             bool changed = OutageUpdater.Update(dto, storedOutage);
-
-            if (!storedOutage.IsActive)
-            {
-                _logger.LogWarning("Inactive outage {SourceId} reappeared.", storedOutage.SourceId);
-
-                storedOutage.IsActive = true;
-                storedOutage.ResolvedAt = null;
-                changed = true;
-            }
 
             if (changed)
                 result.Updated++;
