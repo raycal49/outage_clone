@@ -1,0 +1,90 @@
+/*
+ * Overlay UI drawn on top of the map.
+ *
+ * The basemap is dark-v11, so these surfaces are fixed dark glass rather than
+ * theme-aware - they sit on the map, not on the page.
+ */
+
+:root {
+    --ui-surface: rgba(13, 12, 18, .78);
+    --ui-border: rgba(255, 255, 255, .13);
+    --ui-text: #e9e7f2;
+    --ui-text-dim: rgba(255, 255, 255, .58);
+    --ui-shadow: 0 14px 34px -14px rgba(0, 0, 0, .8);
+    --ui-mono: ui-monospace, "SF Mono", SFMono-Regular, "Cascadia Mono", Menlo, Consolas, monospace;
+
+    --status-live: #10b981;
+    --status-warn: #f59e0b;
+    --status-down: #94a3b8;
+}
+
+/* ---------------------------------------------------------- status pill */
+
+.status-pill {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px 6px 10px;
+    border-radius: 999px;
+    background: var(--ui-surface);
+    backdrop-filter: blur(9px) saturate(1.2);
+    border: 1px solid var(--ui-border);
+    box-shadow: var(--ui-shadow);
+    font-family: var(--ui-mono);
+    font-size: 11px;
+    letter-spacing: .04em;
+    color: var(--ui-text);
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.status-pill__beacon {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex: none;
+    background: var(--status-down);
+}
+
+.status-pill--live .status-pill__beacon {
+    background: var(--status-live);
+    animation: status-pill-beat 2000ms ease-out infinite;
+}
+
+.status-pill--connecting .status-pill__beacon,
+.status-pill--reconnecting .status-pill__beacon {
+    background: var(--status-warn);
+}
+
+.status-pill__sep {
+    color: rgba(255, 255, 255, .3);
+}
+
+.status-pill__age {
+    color: var(--ui-text-dim);
+    font-variant-numeric: tabular-nums;
+}
+
+@keyframes status-pill-beat {
+    0%   { box-shadow: 0 0 0 0 rgba(16, 185, 129, .55); }
+    70%  { box-shadow: 0 0 0 7px rgba(16, 185, 129, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .status-pill--live .status-pill__beacon {
+        animation: none;
+    }
+}
+
+/* Keep the pill clear of the Mapbox geocoder on narrow screens. */
+@media (max-width: 640px) {
+    .status-pill {
+        top: auto;
+        bottom: 12px;
+    }
+}

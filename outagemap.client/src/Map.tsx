@@ -1,11 +1,18 @@
 import { useState, useEffect, useRef } from 'react';
-import Map, { FullscreenControl, GeolocateControl, NavigationControl, Source, Layer, Popup, type LayerProps, type MapMouseEvent } from 'react-map-gl/mapbox';
+import Map, { FullscreenControl, GeolocateControl, NavigationControl, Source, Layer, Popup, type LayerProps, type MapMouseEvent, type MapRef } from 'react-map-gl/mapbox';
 import GeocoderControl from './Geocoder';
-import type { Feature, FeatureCollection, Point } from 'geojson';
 import { HubConnectionBuilder } from '@microsoft/signalr';
+import StatusPill from './components/StatusPill';
+import { collectIds, featuresWithNewIds, type ConnectionState, type OutageCollection, type OutageFeature } from './lib/outages';
 import './Map.css';
+import './ui.css';
 
 const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
+
+/** How long a newly arrived outage keeps its bloom ring. */
+const ARRIVAL_MS = 1600;
+const ARRIVAL_RADIUS_FROM = 6;
+const ARRIVAL_RADIUS_TO = 40;
 
 function MyMap() {
     const [viewState, setViewState] = useState({
@@ -15,27 +22,20 @@ function MyMap() {
     });
 
     const geoRef = useRef<mapboxgl.GeolocateControl | null>(null);
-
-    type OutageProperties = {
-        status?: string;
-        numPeople?: number | string;
-        etrTime?: number | string;
-    };
-
-    type OutageFeature = Feature<Point, OutageProperties>;
+    const mapRef = useRef<MapRef | null>(null);
 
     const [selectedOutage, setSelectedOutage] = useState<OutageFeature | null>(null);
     const [popupLngLat, setPopupLngLat] = useState<{ lng: number; lat: number } | null>(null);
-    const [outageFc, setOutageFc] = useState<FeatureCollection<Point> | null>(null);
+    const [outageFc, setOutageFc] = useState<OutageCollection | null>(null);
 
-    // useEffect(() => {
-    //     (async () => {
-    //         const res = await fetch("/OutageMap/OutageData");
-    //         if (!res.ok) throw new Error(`OutageData failed (${res.status})`);
-    //         const fc: FeatureCollection<Point> = await res.json();
-    //         setOutageFc(fc);
-    //     })().catch(console.error);
-    // }, []);
+    const [connectionState, setConnectionState] = useState<ConnectionState>('connecting');
+    const [lastUpdatedAt, setLastUpdatedAt] = useState<number | null>(null);
+    const [arrivals, setArrivals] = useState<OutageCollection | null>(null);
+
+    // Ids from the previous payload. Null until the first load completes, which is
+    // how the initial fetch avoids blooming every outage at once.
+    const previousIdsRef = useRef<Set<number> | null>(null);
+    const arrivalTimerRef = useRef<number | null>(null);
 
     useEffect(() => {
         const refreshOutages = async () => {
@@ -44,9 +44,28 @@ function MyMap() {
             if (!res.ok)
                 throw new Error(`OutageData failed (${res.status})`);
 
-            const fc: FeatureCollection<Point> = await res.json();
+            const fc: OutageCollection = await res.json();
+
+            const previousIds = previousIdsRef.current;
+            previousIdsRef.current = collectIds(fc);
 
             setOutageFc(fc);
+            setLastUpdatedAt(Date.now());
+
+            if (previousIds === null)
+                return;
+
+            const arrived = featuresWithNewIds(fc, previousIds);
+
+            if (arrived.length === 0)
+                return;
+
+            setArrivals({ type: "FeatureCollection", features: arrived });
+
+            if (arrivalTimerRef.current !== null)
+                window.clearTimeout(arrivalTimerRef.current);
+
+            arrivalTimerRef.current = window.setTimeout(() => setArrivals(null), ARRIVAL_MS);
         };
 
         const connection = new HubConnectionBuilder()
@@ -60,18 +79,67 @@ function MyMap() {
 
         connection.on("OutagesChanged", handleOutagesChanged);
 
+        connection.onreconnecting(() => setConnectionState('reconnecting'));
+
         connection.onreconnected(() => {
+            setConnectionState('live');
             refreshOutages().catch(console.error);
         });
 
+        connection.onclose(() => setConnectionState('offline'));
+
         refreshOutages().catch(console.error);
-        connection.start().catch(console.error);
+
+        connection
+            .start()
+            .then(() => setConnectionState('live'))
+            .catch(error => {
+                console.error(error);
+                setConnectionState('offline');
+            });
 
         return () => {
+            if (arrivalTimerRef.current !== null)
+                window.clearTimeout(arrivalTimerRef.current);
+
             connection.off("OutagesChanged", handleOutagesChanged);
             connection.stop().catch(console.error);
         };
     }, []);
+
+    // Expand and fade the arrival rings. Driven by setPaintProperty rather than React
+    // state so the animation never re-renders the map.
+    useEffect(() => {
+        if (!arrivals) return;
+
+        const map = mapRef.current?.getMap();
+        if (!map) return;
+
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduceMotion) return;
+
+        const start = performance.now();
+        let frame = requestAnimationFrame(function step(timestamp: number) {
+            const progress = Math.min(1, (timestamp - start) / ARRIVAL_MS);
+            const eased = 1 - Math.pow(1 - progress, 3);
+
+            // The layer is added by the child <Layer>, which may not have mounted on
+            // the first frame. Keep animating rather than bailing out, so a late
+            // layer still picks the animation up mid-flight.
+            if (map.getLayer("outage-arrivals")) {
+                map.setPaintProperty(
+                    "outage-arrivals",
+                    "circle-radius",
+                    ARRIVAL_RADIUS_FROM + eased * (ARRIVAL_RADIUS_TO - ARRIVAL_RADIUS_FROM)
+                );
+                map.setPaintProperty("outage-arrivals", "circle-stroke-opacity", 0.9 * (1 - eased));
+            }
+
+            if (progress < 1) frame = requestAnimationFrame(step);
+        });
+
+        return () => cancelAnimationFrame(frame);
+    }, [arrivals]);
 
     const outageLayer = {
         id: "outage-points",
@@ -83,6 +151,28 @@ function MyMap() {
             "circle-stroke-color": "#000",
 
             "circle-color": [
+                "match",
+                ["get", "status"],
+                "Pending Assessment", "#f59e0b",
+                "Crew Assessing", "#3b82f6",
+                "Planned Outage", "#ef4444",
+                "#10b981"
+            ]
+        }
+    } satisfies LayerProps;
+
+    // Ring drawn over a newly arrived outage. Starts at the point radius and is
+    // expanded/faded by the animation effect above.
+    const arrivalLayer = {
+        id: "outage-arrivals",
+        type: "circle",
+        paint: {
+            "circle-radius": ARRIVAL_RADIUS_FROM,
+            "circle-opacity": 0,
+            "circle-stroke-width": 2,
+            "circle-stroke-opacity": 0.9,
+
+            "circle-stroke-color": [
                 "match",
                 ["get", "status"],
                 "Pending Assessment", "#f59e0b",
@@ -108,6 +198,7 @@ function MyMap() {
         <>
             <div className="mapdiv">
                 <Map
+                    ref={mapRef}
                     {...viewState}
                     onMove={(evt) => setViewState(evt.viewState)}
                     mapStyle="mapbox://styles/mapbox/dark-v11"
@@ -126,6 +217,12 @@ function MyMap() {
                     {outageFc && (
                         <Source id="outages" type="geojson" data={outageFc}>
                             <Layer {...outageLayer} />
+                        </Source>
+                    )}
+
+                    {arrivals && (
+                        <Source id="outage-arrivals" type="geojson" data={arrivals}>
+                            <Layer {...arrivalLayer} />
                         </Source>
                     )}
 
@@ -164,6 +261,8 @@ function MyMap() {
                     <FullscreenControl />
                     <NavigationControl />
                 </Map>
+
+                <StatusPill state={connectionState} lastUpdatedAt={lastUpdatedAt} />
             </div>
         </>
     );
