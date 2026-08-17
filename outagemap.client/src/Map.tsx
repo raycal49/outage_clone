@@ -110,7 +110,7 @@ function MyMap() {
                 <Map
                     {...viewState}
                     onMove={(evt) => setViewState(evt.viewState)}
-                    mapStyle="mapbox://styles/mapbox/streets-v12"
+                    mapStyle="mapbox://styles/mapbox/dark-v11"
                     mapboxAccessToken={MAPBOX_TOKEN}
                     hash={true}
                     reuseMaps={true}

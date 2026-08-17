@@ -1,42 +1,22 @@
-#map-container {
-    height: 100%;
-    width: 100%;
-    /* temporarily set the background color so we can tell where the map container is positioned */
-    background-color: lightgrey;
-}
-
-.sidebar {
-    background-color: rgb(35 55 75 / 90%);
-    color: #fff;
-    padding: 6px 12px;
-    font-family: monospace;
-    z-index: 1;
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin: 12px;
-    border-radius: 4px;
-}
-
 .mapdiv {
     height: 100%;
     width: 100%;
-    position: relative
+    position: relative;
 }
 
 /* Tunables for layout */
 :root {
-  --geocoder-w: clamp(240px, 28vw, 360px);  /* geocoder width (desktop) */
+    --geocoder-w: clamp(240px, 28vw, 360px); /* geocoder width (desktop) */
 }
 
 /* Make the Mapbox Geocoder that width so our offset is accurate */
 .mapboxgl-ctrl-geocoder {
-  width: var(--geocoder-w) !important; /* plugin allows CSS width override */
+    width: var(--geocoder-w) !important; /* plugin allows CSS width override */
 }
 
 /* Responsive tweaks for narrow screens */
 @media (max-width: 640px) {
-  :root {
-    --geocoder-w: clamp(200px, 50vw, 260px);
-  }
+    :root {
+        --geocoder-w: clamp(200px, 50vw, 260px);
+    }
 }
