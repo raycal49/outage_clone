@@ -2,7 +2,7 @@
 
 namespace OutageMap.Server.Infrastructure.Http;
 
-    public interface IOutageService
+    public interface IOutageSource
     {
-        Task<List<OutageDataDto>> GetOutageData();
+        Task<List<OutageDto>> GetOutageData();
     }

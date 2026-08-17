@@ -1,7 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NetTopologySuite.IO.Converters;
+using OutageMap.Server.Hubs;
 using OutageMap.Server.Infrastructure.Http;
+using OutageMap.Server.Services;
 using OutageMap.Server.Models;
+using Services.BackgroundServices;
 using System.Text.Json.Serialization;
 
 var opts = new WebApplicationOptions
@@ -42,19 +45,19 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     {
         options.EnableDetailedErrors();
         options.EnableSensitiveDataLogging();
-        options.LogTo(Console.WriteLine);
     }
 });
 
 
-if (builder.Configuration.GetValue<bool>("Outages:UseFixture"))
-{
-    builder.Services.AddSingleton<IOutageService, FixtureOutageService>();
-}
-else builder.Services.AddHttpClient<IOutageService,OutageService>(client =>
+builder.Services.AddHttpClient<IOutageSource,PollOutageSource>(client =>
 {
     client.BaseAddress = new Uri("https://centerpoint.datacapable.com/datacapable/v2/p/centerpoint/r/texas/map/events");
 });
+
+builder.Services.AddHostedService<OutagePoller>();
+builder.Services.AddSignalR();
+builder.Services.AddScoped<OutageSyncService>();
+builder.Services.AddScoped<IOutageReader, OutageReader>();
 
 string connectionString = builder.Configuration.GetConnectionString("Redis");
 
@@ -62,7 +65,6 @@ builder.Services.AddStackExchangeRedisCache(options =>
 {
     options.Configuration = connectionString;
 });
-
 
 var app = builder.Build();
 
@@ -85,6 +87,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapHub<OutageHub>("/outageHub");
 
 app.MapFallbackToFile("/index.html");
 

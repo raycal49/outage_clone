@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import Map, { FullscreenControl, GeolocateControl, NavigationControl, Source, Layer, Popup, type LayerProps, type MapMouseEvent } from 'react-map-gl/mapbox';
 import GeocoderControl from './Geocoder';
 import type { Feature, FeatureCollection, Point } from 'geojson';
+import { HubConnectionBuilder } from '@microsoft/signalr';
 import './Map.css';
 
 const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
@@ -27,13 +28,49 @@ function MyMap() {
     const [popupLngLat, setPopupLngLat] = useState<{ lng: number; lat: number } | null>(null);
     const [outageFc, setOutageFc] = useState<FeatureCollection<Point> | null>(null);
 
+    // useEffect(() => {
+    //     (async () => {
+    //         const res = await fetch("/OutageMap/OutageData");
+    //         if (!res.ok) throw new Error(`OutageData failed (${res.status})`);
+    //         const fc: FeatureCollection<Point> = await res.json();
+    //         setOutageFc(fc);
+    //     })().catch(console.error);
+    // }, []);
+
     useEffect(() => {
-        (async () => {
+        const refreshOutages = async () => {
             const res = await fetch("/OutageMap/OutageData");
-            if (!res.ok) throw new Error(`OutageData failed (${res.status})`);
+
+            if (!res.ok)
+                throw new Error(`OutageData failed (${res.status})`);
+
             const fc: FeatureCollection<Point> = await res.json();
+
             setOutageFc(fc);
-        })().catch(console.error);
+        };
+
+        const connection = new HubConnectionBuilder()
+            .withUrl("/outageHub")
+            .withAutomaticReconnect()
+            .build();
+
+        const handleOutagesChanged = () => {
+            refreshOutages().catch(console.error);
+        };
+
+        connection.on("OutagesChanged", handleOutagesChanged);
+
+        connection.onreconnected(() => {
+            refreshOutages().catch(console.error);
+        });
+
+        refreshOutages().catch(console.error);
+        connection.start().catch(console.error);
+
+        return () => {
+            connection.off("OutagesChanged", handleOutagesChanged);
+            connection.stop().catch(console.error);
+        };
     }, []);
 
     const outageLayer = {

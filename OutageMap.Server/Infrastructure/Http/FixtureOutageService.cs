@@ -3,7 +3,7 @@ using System.Text.Json;
 
 namespace OutageMap.Server.Infrastructure.Http;
 
-public class FixtureOutageService : IOutageService
+public class FixtureOutageService : IOutageSource
 {
     private readonly string _fixturePath;
 
@@ -12,10 +12,10 @@ public class FixtureOutageService : IOutageService
         _fixturePath = Path.Combine(env.ContentRootPath, "Fixtures", "events.json");
     }
 
-    public async Task<List<OutageDataDto>> GetOutageData()
+    public async Task<List<OutageDto>> GetOutageData()
     {
         await using var stream = File.OpenRead(_fixturePath);
-        var data = await JsonSerializer.DeserializeAsync<List<OutageDataDto>>(stream);
+        var data = await JsonSerializer.DeserializeAsync<List<OutageDto>>(stream);
         return data ?? [];
     }
 }

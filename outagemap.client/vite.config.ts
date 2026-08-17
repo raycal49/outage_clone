@@ -39,6 +39,11 @@ export default defineConfig({
             '^/OutageMap': {
                 target,
                 secure: false
+            },
+            '^/outageHub': {
+                target,
+                secure: false,
+                ws: true
             }
         },
         port: 5173,

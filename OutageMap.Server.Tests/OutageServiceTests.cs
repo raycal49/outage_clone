@@ -7,7 +7,7 @@ namespace OutageMap.Server.Tests;
 
 public class OutageServiceTests
 {
-    private OutageService _sut;
+    private PollOutageSource _sut;
     private MockHttpMessageHandler _handlerMock = new();
     private HttpClient _clientMock;
 
@@ -15,7 +15,7 @@ public class OutageServiceTests
     {
         _clientMock = _handlerMock.ToHttpClient();
         _clientMock.BaseAddress = new Uri("https://centerpoint.datacapable.com/*");
-        _sut = new OutageService(_clientMock);
+        _sut = new PollOutageSource(_clientMock);
     }
 
     [Fact]
@@ -43,6 +43,6 @@ public class OutageServiceTests
 
         var result = await _sut.GetOutageData();
 
-        Assert.IsType<List<OutageDataDto>>(result);
+        Assert.IsType<List<OutageDto>>(result);
     }
 }

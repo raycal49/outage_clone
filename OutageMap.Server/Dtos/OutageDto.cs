@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace OutageMap.Server.Dtos;
 
-public class OutageDataDto
+public class OutageDto
 {
     [JsonPropertyName("latitude")]
     public double Latitude { get; set; }
@@ -12,7 +12,7 @@ public class OutageDataDto
     public double Longitude { get; set; }
 
     [JsonPropertyName("id")]
-    public int Id { get; set; }
+    public long Id { get; set; }
 
     [JsonPropertyName("startTime")]
     public long StartTime { get; set; }
@@ -33,18 +33,26 @@ public class OutageDataDto
     public string? Cause { get; set; }
 
     [JsonPropertyName("identifier")]
-    public string? identifier { get; set; }
+    public string? Identifier { get; set; }
 
     [JsonPropertyName("additionalProperties")]
-    public List<Properties>? AdditionalProperties { get; set; }
+    public List<OutageProperties>? AdditionalProperties { get; set; }
 
 }
 
-public sealed class Properties
+public sealed class OutageProperties
 {
     [JsonPropertyName("property")]
     public string? Property { get; init; }
 
     [JsonPropertyName("value")]
-    public JsonElement? Value { get; init; }
+    public JsonElement Value { get; init; }
+
+    public string? GetFirstString()
+    {
+        if (Value.GetArrayLength() == 0)
+            throw new InvalidOperationException($"Property '{Property}' had an empty value array.");
+
+        return Value[0].GetString();
+    }
 }
