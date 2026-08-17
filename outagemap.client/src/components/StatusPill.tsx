@@ -44,8 +44,7 @@ export default function StatusPill({ state, lastUpdatedAt }: StatusPillProps) {
             className="status-pill pointer-events-none absolute top-3 left-3 z-3 inline-flex leading-[normal]
                        items-center gap-2 rounded-[999px] border border-ui-border bg-ui-surface
                        py-1.5 pr-3 pl-2.5 font-ui-mono text-[11px] tracking-[.04em] whitespace-nowrap
-                       text-ui-text shadow-ui-panel backdrop-blur-[9px] backdrop-saturate-[1.2]
-                       max-[640px]:top-auto max-[640px]:bottom-3"
+                       text-ui-text shadow-ui-panel backdrop-blur-[9px] backdrop-saturate-[1.2]"
         >
             <span aria-hidden="true" className={`size-[7px] shrink-0 rounded-full ${BEACONS[state]}`} />
             <span>{LABELS[state]}</span>

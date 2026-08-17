@@ -33,3 +33,27 @@
     color: #fff;
     background: transparent;
 }
+
+/*
+ * Attribution and the Mapbox wordmark.
+ *
+ * These MUST stay visible: displaying them is a condition of the Mapbox terms
+ * while using their tiles, and the OpenStreetMap data underneath carries its own
+ * attribution requirement. Compacting (via <AttributionControl compact />),
+ * repositioning and dimming are all permitted; hiding them is not.
+ *
+ * Dimmed so they recede against the dark basemap, returning to full strength on
+ * hover or keyboard focus so they stay readable the moment anyone looks.
+ */
+.mapboxgl-ctrl-attrib,
+.mapboxgl-ctrl-logo {
+    opacity: .6;
+    transition: opacity .15s ease;
+}
+
+.mapboxgl-ctrl-attrib:hover,
+.mapboxgl-ctrl-attrib:focus-within,
+.mapboxgl-ctrl-logo:hover,
+.mapboxgl-ctrl-logo:focus-within {
+    opacity: 1;
+}

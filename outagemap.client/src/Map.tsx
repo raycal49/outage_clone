@@ -1,13 +1,11 @@
 import { useState, useEffect, useMemo, useRef } from 'react';
-import Map, { FullscreenControl, GeolocateControl, NavigationControl, Source, Layer, Popup, type LayerProps, type MapMouseEvent, type MapRef } from 'react-map-gl/mapbox';
-import GeocoderControl from './Geocoder';
+import Map, { AttributionControl, FullscreenControl, GeolocateControl, NavigationControl, Source, Layer, Popup, type LayerProps, type MapMouseEvent, type MapRef } from 'react-map-gl/mapbox';
 import { HubConnectionBuilder } from '@microsoft/signalr';
 import StatusPill from './components/StatusPill';
 import OutageStats from './components/OutageStats';
 import OutagePopup from './components/OutagePopup';
 import type { ExpressionSpecification } from 'mapbox-gl';
 import { collectIds, featuresWithNewIds, summariseOutages, STATUS_COLORS, UNKNOWN_STATUS_COLOR, type ConnectionState, type OutageCollection, type OutageFeature } from './lib/outages';
-import './Map.css';
 import './mapbox-overrides.css';
 
 const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
@@ -238,17 +236,13 @@ function MyMap() {
                     onMove={(evt) => setViewState(evt.viewState)}
                     mapStyle="mapbox://styles/mapbox/dark-v11"
                     mapboxAccessToken={MAPBOX_TOKEN}
+                    attributionControl={false}
+                    logoPosition="bottom-right"
                     hash={true}
                     reuseMaps={true}
                     interactiveLayerIds={["outage-points"]}
                     onClick={handleMapClick}
                 >
-                    <GeocoderControl
-                        mapboxAccessToken={MAPBOX_TOKEN}
-                        position="top-left"
-                        marker={false}
-                    />
-
                     {outageFc && (
                         <Source id="outages" type="geojson" data={outageFc}>
                             <Layer {...outageHaloLayer} />
@@ -278,6 +272,8 @@ function MyMap() {
                             <OutagePopup outage={selectedOutage} />
                         </Popup>
                     )}
+
+                    <AttributionControl compact position="bottom-right" />
 
                     <GeolocateControl ref={geoRef} />
                     <FullscreenControl />

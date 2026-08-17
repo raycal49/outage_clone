@@ -43,7 +43,7 @@ export default function OutageStats({ summary }: OutageStatsProps) {
             className="absolute top-[52px] left-3 z-3 flex w-[min(258px,calc(100%-24px))] flex-col leading-[normal]
                        gap-3 rounded-[9px] border border-ui-border bg-ui-surface px-[14px] pt-[13px]
                        pb-[14px] font-ui-sans text-ui-text shadow-ui-panel backdrop-blur-[12px]
-                       backdrop-saturate-[1.25] max-[640px]:top-3 max-[640px]:gap-[9px]
+                       backdrop-saturate-[1.25] max-[640px]:gap-[9px]
                        max-[640px]:w-[min(216px,calc(100%-24px))] max-[640px]:px-3
                        max-[640px]:pt-2.5 max-[640px]:pb-[11px]"
         >
