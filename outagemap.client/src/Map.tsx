@@ -4,6 +4,7 @@ import GeocoderControl from './Geocoder';
 import { HubConnectionBuilder } from '@microsoft/signalr';
 import StatusPill from './components/StatusPill';
 import OutageStats from './components/OutageStats';
+import OutagePopup from './components/OutagePopup';
 import type { ExpressionSpecification } from 'mapbox-gl';
 import { collectIds, featuresWithNewIds, summariseOutages, STATUS_COLORS, UNKNOWN_STATUS_COLOR, type ConnectionState, type OutageCollection, type OutageFeature } from './lib/outages';
 import './Map.css';
@@ -267,28 +268,14 @@ function MyMap() {
                             latitude={popupLngLat.lat}
                             anchor="top"
                             closeOnClick={false}
+                            className="popup-shell"
+                            maxWidth="none"
                             onClose={() => {
                                 setSelectedOutage(null);
                                 setPopupLngLat(null);
                             }}
                         >
-                            {(() => {
-                                const p = selectedOutage.properties ?? {};
-                                const status = p.status ?? "—";
-                                const people = p.numPeople != null ? Number(p.numPeople) : "—";
-                                const etr =
-                                    p.etrTime != null
-                                        ? new Date(Number(p.etrTime)).toLocaleString()
-                                        : "—";
-
-                                return (
-                                    <div style={{ minWidth: 200 }}>
-                                        <div><b>Status:</b> {status}</div>
-                                        <div><b>People:</b> {people}</div>
-                                        <div><b>ETR:</b> {etr}</div>
-                                    </div>
-                                );
-                            })()}
+                            <OutagePopup outage={selectedOutage} />
                         </Popup>
                     )}
 

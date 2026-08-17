@@ -240,33 +240,159 @@
     white-space: nowrap;
 }
 
-/* On phones the map is the product - keep the headline figures, drop the detail. */
+/* On phones, drop the chart and footer but keep the swatch rows: they are what
+   makes the colours on the map readable, so they are not optional detail. */
 @media (max-width: 640px) {
     .stats {
         top: 12px;
-        left: 12px;
-        right: 12px;
-        width: auto;
-        flex-direction: row;
-        align-items: center;
-        gap: 16px;
-        padding: 9px 12px;
+        width: min(216px, calc(100% - 24px));
+        gap: 9px;
+        padding: 10px 12px 11px;
     }
 
     .stats__head,
-    .stats__breakdown,
     .stats__trend,
-    .stats__foot,
-    .stats__stack {
+    .stats__foot {
         display: none;
     }
 
-    .stats__tiles {
-        display: flex;
-        gap: 16px;
+    .stats__big {
+        font-size: 17px;
     }
 
-    .stats__big {
-        font-size: 16px;
+    .stats__row {
+        font-size: 10.5px;
     }
+}
+
+/* ---------------------------------------------------------- outage popup */
+
+/* Strip the default Mapbox popup chrome so the card below is the whole visual. */
+.popup-shell .mapboxgl-popup-content {
+    background: transparent;
+    padding: 0;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.popup-shell .mapboxgl-popup-tip {
+    border-bottom-color: rgba(15, 14, 20, .93);
+    border-top-color: rgba(15, 14, 20, .93);
+}
+
+.popup-shell .mapboxgl-popup-close-button {
+    color: rgba(255, 255, 255, .55);
+    font-size: 17px;
+    padding: 2px 7px;
+    right: 2px;
+    top: 2px;
+    background: transparent;
+    border: 0;
+}
+
+.popup-shell .mapboxgl-popup-close-button:hover {
+    color: #fff;
+    background: transparent;
+}
+
+.popup {
+    box-sizing: border-box;
+    width: 246px;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    padding: 13px 14px;
+    border-radius: 10px;
+    background: rgba(15, 14, 20, .93);
+    backdrop-filter: blur(14px) saturate(1.3);
+    border: 1px solid var(--ui-border);
+    box-shadow: 0 16px 38px -14px rgba(0, 0, 0, .85);
+    color: var(--ui-text);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.popup * { box-sizing: border-box; }
+
+.popup__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding-right: 18px; /* clear of the close button */
+}
+
+.popup__chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 9px 4px 7px;
+    border-radius: 999px;
+    border: 1px solid;
+    font-family: var(--ui-mono);
+    font-size: 10px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    line-height: 1.25;
+    white-space: nowrap;
+}
+
+.popup__chip-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex: none;
+}
+
+.popup__etr {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.popup__etr-value {
+    font-family: var(--ui-mono);
+    font-size: 25px;
+    line-height: 1.05;
+    letter-spacing: -.02em;
+    font-variant-numeric: tabular-nums;
+}
+
+.popup__etr-label {
+    font-family: var(--ui-mono);
+    font-size: 9.5px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, .42);
+}
+
+.popup__rows {
+    margin: 0;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, .1);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.popup__row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.popup__row dt {
+    font-family: var(--ui-mono);
+    font-size: 9.5px;
+    letter-spacing: .11em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, .42);
+    white-space: nowrap;
+}
+
+.popup__row dd {
+    margin: 0;
+    text-align: right;
+    font-size: 12px;
+    color: rgba(255, 255, 255, .93);
 }
