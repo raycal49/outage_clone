@@ -18,6 +18,15 @@
     --status-down: #94a3b8;
 }
 
+/* The app sets no global border-box, so declare it locally - otherwise padding
+   is added on top of the stated widths and the panels come out wider than spec. */
+.status-pill,
+.status-pill *,
+.stats,
+.stats * {
+    box-sizing: border-box;
+}
+
 /* ---------------------------------------------------------- status pill */
 
 .status-pill {
@@ -86,5 +95,178 @@
     .status-pill {
         top: auto;
         bottom: 12px;
+    }
+}
+
+/* ---------------------------------------------------------- summary panel */
+
+.stats {
+    position: absolute;
+    top: 52px;
+    left: 12px;
+    z-index: 3;
+    width: min(258px, calc(100% - 24px));
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 13px 14px 14px;
+    border-radius: 9px;
+    background: var(--ui-surface);
+    backdrop-filter: blur(12px) saturate(1.25);
+    border: 1px solid var(--ui-border);
+    box-shadow: var(--ui-shadow);
+    color: var(--ui-text);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.stats__head,
+.stats__foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    font-family: var(--ui-mono);
+    font-size: 9.5px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, .48);
+}
+
+.stats__foot {
+    border-top: 1px solid rgba(255, 255, 255, .1);
+    padding-top: 9px;
+}
+
+.stats__foot-value {
+    color: rgba(255, 255, 255, .9);
+    font-variant-numeric: tabular-nums;
+}
+
+.stats__tiles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 8px;
+}
+
+.stats__tile {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    min-width: 0;
+}
+
+.stats__big {
+    font-family: var(--ui-mono);
+    font-size: 21px;
+    line-height: 1.1;
+    letter-spacing: -.02em;
+    font-variant-numeric: tabular-nums;
+}
+
+.stats__cap {
+    font-family: var(--ui-mono);
+    font-size: 9.5px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, .5);
+}
+
+/* Proportion bar. 2px surface gaps keep adjacent segments legible when two
+   statuses sit next to each other. */
+.stats__stack {
+    display: flex;
+    gap: 2px;
+    height: 7px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.stats__stack i {
+    display: block;
+    height: 100%;
+    min-width: 2px;
+}
+
+.stats__breakdown {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.stats__row {
+    display: grid;
+    grid-template-columns: 8px 1fr auto;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    color: rgba(255, 255, 255, .78);
+}
+
+.stats__swatch {
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+}
+
+.stats__name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.stats__count {
+    font-family: var(--ui-mono);
+    font-variant-numeric: tabular-nums;
+    color: rgba(255, 255, 255, .95);
+}
+
+.stats__trend {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.stats__tip {
+    background: rgba(13, 12, 18, .94);
+    border: 1px solid var(--ui-border);
+    border-radius: 5px;
+    padding: 4px 8px;
+    font-family: var(--ui-mono);
+    font-size: 10.5px;
+    color: var(--ui-text);
+    white-space: nowrap;
+}
+
+/* On phones the map is the product - keep the headline figures, drop the detail. */
+@media (max-width: 640px) {
+    .stats {
+        top: 12px;
+        left: 12px;
+        right: 12px;
+        width: auto;
+        flex-direction: row;
+        align-items: center;
+        gap: 16px;
+        padding: 9px 12px;
+    }
+
+    .stats__head,
+    .stats__breakdown,
+    .stats__trend,
+    .stats__foot,
+    .stats__stack {
+        display: none;
+    }
+
+    .stats__tiles {
+        display: flex;
+        gap: 16px;
+    }
+
+    .stats__big {
+        font-size: 16px;
     }
 }

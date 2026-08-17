@@ -1,10 +1,11 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import Map, { FullscreenControl, GeolocateControl, NavigationControl, Source, Layer, Popup, type LayerProps, type MapMouseEvent, type MapRef } from 'react-map-gl/mapbox';
 import GeocoderControl from './Geocoder';
 import { HubConnectionBuilder } from '@microsoft/signalr';
 import StatusPill from './components/StatusPill';
+import OutageStats from './components/OutageStats';
 import type { ExpressionSpecification } from 'mapbox-gl';
-import { collectIds, featuresWithNewIds, STATUS_COLORS, UNKNOWN_STATUS_COLOR, type ConnectionState, type OutageCollection, type OutageFeature } from './lib/outages';
+import { collectIds, featuresWithNewIds, summariseOutages, STATUS_COLORS, UNKNOWN_STATUS_COLOR, type ConnectionState, type OutageCollection, type OutageFeature } from './lib/outages';
 import './Map.css';
 import './ui.css';
 
@@ -65,6 +66,9 @@ function MyMap() {
     const [connectionState, setConnectionState] = useState<ConnectionState>('connecting');
     const [lastUpdatedAt, setLastUpdatedAt] = useState<number | null>(null);
     const [arrivals, setArrivals] = useState<OutageCollection | null>(null);
+
+    // Recomputed only when a new payload lands, not on every map pan.
+    const summary = useMemo(() => summariseOutages(outageFc, lastUpdatedAt ?? Date.now()), [outageFc, lastUpdatedAt]);
 
     // Ids from the previous payload. Null until the first load completes, which is
     // how the initial fetch avoids blooming every outage at once.
@@ -294,6 +298,7 @@ function MyMap() {
                 </Map>
 
                 <StatusPill state={connectionState} lastUpdatedAt={lastUpdatedAt} />
+                {outageFc && <OutageStats summary={summary} />}
             </div>
         </>
     );
