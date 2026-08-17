@@ -32,10 +32,7 @@ export default function GeocoderControl(props: GeocoderControlProps): React.Reac
             ctrl.on('result', evt => {
                 props.onResult?.(evt);
 
-                const { result } = evt as { result?: any };
-                const location =
-                    result &&
-                    (result.center || (result.geometry?.type === 'Point' && result.geometry.coordinates));
+                const location = evt.result.geometry.coordinates;
                 if (location && props.marker) {
                     const markerProps =
                         typeof props.marker === 'object'
