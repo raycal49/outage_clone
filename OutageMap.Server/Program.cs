@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using NetTopologySuite.IO.Converters;
 using OutageMap.Server.Hubs;
 using OutageMap.Server.Infrastructure.Http;
-using OutageMap.Server.Services;
 using OutageMap.Server.Models;
+using OutageMap.Server.Services;
 using Services.BackgroundServices;
 using System.Text.Json.Serialization;
 
@@ -49,22 +50,22 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 });
 
 
-builder.Services.AddHttpClient<IOutageSource,PollOutageSource>(client =>
+builder.Services
+    .AddOptions<OutageFeedOptions>()
+    .Bind(builder.Configuration.GetSection(OutageFeedOptions.SectionName))
+    .ValidateDataAnnotations()
+    .ValidateOnStart();
+
+builder.Services.AddHttpClient<IOutageSource, PollOutageSource>((provider, client) =>
 {
-    client.BaseAddress = new Uri("https://centerpoint.datacapable.com/datacapable/v2/p/centerpoint/r/texas/map/events");
+    var options = provider.GetRequiredService<IOptions<OutageFeedOptions>>().Value;
+    client.BaseAddress = options.Url;
 });
 
 builder.Services.AddHostedService<OutagePoller>();
 builder.Services.AddSignalR();
 builder.Services.AddScoped<OutageSyncService>();
 builder.Services.AddScoped<IOutageReader, OutageReader>();
-
-string connectionString = builder.Configuration.GetConnectionString("Redis");
-
-builder.Services.AddStackExchangeRedisCache(options =>
-{
-    options.Configuration = connectionString;
-});
 
 var app = builder.Build();
 
@@ -78,14 +79,11 @@ if (app.Environment.IsDevelopment())
     {
         options.DisplayRequestDuration();
     });
-
-    app.UseDeveloperExceptionPage();
 }
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
-
+app.UseExceptionHandler();
 app.MapControllers();
 app.MapHub<OutageHub>("/outageHub");
 

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.SignalR;
+using Microsoft.Extensions.Options;
 using OutageMap.Server.Hubs;
 using OutageMap.Server.Infrastructure.Http;
 using OutageMap.Server.Services;
@@ -7,13 +8,14 @@ namespace Services.BackgroundServices;
 
 public class OutagePoller : BackgroundService
 {
-    private readonly TimeSpan _period = TimeSpan.FromMinutes(10);
+    private readonly TimeSpan _period;
     private readonly ILogger<OutagePoller> _logger;
     private readonly IServiceProvider _serviceProvider;
     private readonly IHubContext<OutageHub> _hub;
 
-    public OutagePoller(ILogger<OutagePoller> logger, IServiceProvider service, IHubContext<OutageHub> hub)
+    public OutagePoller(IOptions<OutageFeedOptions> feedOptions, ILogger<OutagePoller> logger,IServiceProvider service, IHubContext<OutageHub> hub)
     {
+        _period = feedOptions.Value.PollInterval ;
         _logger = logger;
         _serviceProvider = service;
         _hub = hub;
