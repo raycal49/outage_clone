@@ -8,7 +8,7 @@ import OutagePopup from './components/OutagePopup';
 import type { ExpressionSpecification } from 'mapbox-gl';
 import { collectIds, featuresWithNewIds, summariseOutages, STATUS_COLORS, UNKNOWN_STATUS_COLOR, type ConnectionState, type OutageCollection, type OutageFeature } from './lib/outages';
 import './Map.css';
-import './ui.css';
+import './mapbox-overrides.css';
 
 const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
 

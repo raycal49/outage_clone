@@ -1,0 +1,35 @@
+/*
+ * Styling for DOM that Mapbox GL creates, not our JSX.
+ *
+ * Utility classes cannot reach these elements - mapbox-gl builds and injects
+ * them itself - so this is the residue that survives the Tailwind conversion.
+ * Everything else that used to live here is now utilities on the components.
+ */
+
+/* Strip the default popup chrome so the card inside is the whole visual. */
+.popup-shell .mapboxgl-popup-content {
+    background: transparent;
+    padding: 0;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.popup-shell .mapboxgl-popup-tip {
+    border-bottom-color: rgba(15, 14, 20, .93);
+    border-top-color: rgba(15, 14, 20, .93);
+}
+
+.popup-shell .mapboxgl-popup-close-button {
+    color: rgba(255, 255, 255, .55);
+    font-size: 17px;
+    padding: 2px 7px;
+    right: 2px;
+    top: 2px;
+    background: transparent;
+    border: 0;
+}
+
+.popup-shell .mapboxgl-popup-close-button:hover {
+    color: #fff;
+    background: transparent;
+}

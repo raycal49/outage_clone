@@ -44,28 +44,41 @@ export default function OutagePopup({ outage }: OutagePopupProps) {
         rows.push({ label: 'ID', value: `#${properties.id}` });
 
     return (
-        <div className="popup">
-            <div className="popup__top">
+        <div
+            className="popup flex w-[246px] flex-col gap-[11px] leading-[normal] rounded-[10px] border border-ui-border
+                       bg-ui-surface-solid px-[14px] py-[13px] font-ui-sans text-ui-text
+                       shadow-ui-popup backdrop-blur-[14px] backdrop-saturate-[1.3]"
+        >
+            {/* pr clears the Mapbox close button, which is positioned over this row */}
+            <div className="flex items-center justify-between gap-2.5 pr-[18px]">
                 <span
-                    className="popup__chip"
+                    className="inline-flex items-center gap-1.5 rounded-[999px] border py-1 pr-[9px]
+                               pl-[7px] font-ui-mono text-[10px] leading-[1.25] tracking-[.06em]
+                               whitespace-nowrap uppercase"
                     style={{ color, borderColor: `${color}66`, background: `${color}1f` }}
                 >
-                    <span className="popup__chip-dot" style={{ background: color }} />
+                    <span className="size-1.5 shrink-0 rounded-full" style={{ background: color }} />
                     {status}
                 </span>
             </div>
 
-            <div className="popup__etr">
-                <span className="popup__etr-value">{formatRelativeEtr(properties.etrTime)}</span>
-                <span className="popup__etr-label">Estimated restoration</span>
+            <div className="flex flex-col gap-px">
+                <span className="font-ui-mono text-[25px] leading-[1.05] tracking-[-.02em] tabular-nums">
+                    {formatRelativeEtr(properties.etrTime)}
+                </span>
+                <span className="font-ui-mono text-[9.5px] tracking-[.12em] uppercase text-white/42">
+                    Estimated restoration
+                </span>
             </div>
 
             {rows.length > 0 && (
-                <dl className="popup__rows">
+                <dl className="m-0 flex flex-col gap-[5px] border-t border-white/10 pt-2.5">
                     {rows.map(row => (
-                        <div key={row.label} className="popup__row">
-                            <dt>{row.label}</dt>
-                            <dd>{row.value}</dd>
+                        <div key={row.label} className="flex items-baseline justify-between gap-3">
+                            <dt className="font-ui-mono text-[9.5px] tracking-[.11em] whitespace-nowrap uppercase text-white/42">
+                                {row.label}
+                            </dt>
+                            <dd className="m-0 text-right text-[12px] text-white/93">{row.value}</dd>
                         </div>
                     ))}
                 </dl>
