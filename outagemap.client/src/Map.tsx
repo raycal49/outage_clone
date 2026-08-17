@@ -3,7 +3,8 @@ import Map, { FullscreenControl, GeolocateControl, NavigationControl, Source, La
 import GeocoderControl from './Geocoder';
 import { HubConnectionBuilder } from '@microsoft/signalr';
 import StatusPill from './components/StatusPill';
-import { collectIds, featuresWithNewIds, type ConnectionState, type OutageCollection, type OutageFeature } from './lib/outages';
+import type { ExpressionSpecification } from 'mapbox-gl';
+import { collectIds, featuresWithNewIds, STATUS_COLORS, UNKNOWN_STATUS_COLOR, type ConnectionState, type OutageCollection, type OutageFeature } from './lib/outages';
 import './Map.css';
 import './ui.css';
 
@@ -13,6 +14,39 @@ const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
 const ARRIVAL_MS = 1600;
 const ARRIVAL_RADIUS_FROM = 6;
 const ARRIVAL_RADIUS_TO = 40;
+
+const POINT_RADIUS_MIN = 4;
+const POINT_RADIUS_MAX = 14;
+const HALO_RADIUS_MIN = 11;
+const HALO_RADIUS_MAX = 40;
+
+/**
+ * Observed range of numPeople in the CenterPoint feed. Radius is interpolated
+ * against sqrt(numPeople) so that a circle's *area*, not its radius, tracks the
+ * customer count - scaling radius linearly would badly over-weight large outages.
+ */
+const CUSTOMERS_MIN = 1;
+const CUSTOMERS_MAX = 182;
+
+function scaleByCustomers(minRadius: number, maxRadius: number): ExpressionSpecification {
+    return [
+        "interpolate",
+        ["linear"],
+        ["sqrt", ["coalesce", ["get", "numPeople"], CUSTOMERS_MIN]],
+        Math.sqrt(CUSTOMERS_MIN), minRadius,
+        Math.sqrt(CUSTOMERS_MAX), maxRadius
+    ];
+}
+
+const STATUS_COLOR_EXPRESSION: ExpressionSpecification = [
+    "match",
+    ["get", "status"],
+    "Pending Assessment", STATUS_COLORS["Pending Assessment"],
+    "Crew Assessing", STATUS_COLORS["Crew Assessing"],
+    "Planned Outage", STATUS_COLORS["Planned Outage"],
+    "Further Assessment Needed", STATUS_COLORS["Further Assessment Needed"],
+    UNKNOWN_STATUS_COLOR
+];
 
 function MyMap() {
     const [viewState, setViewState] = useState({
@@ -141,23 +175,26 @@ function MyMap() {
         return () => cancelAnimationFrame(frame);
     }, [arrivals]);
 
+    const outageHaloLayer = {
+        id: "outage-halos",
+        type: "circle",
+        paint: {
+            "circle-radius": scaleByCustomers(HALO_RADIUS_MIN, HALO_RADIUS_MAX),
+            "circle-color": STATUS_COLOR_EXPRESSION,
+            "circle-opacity": 0.3,
+            "circle-blur": 1
+        }
+    } satisfies LayerProps;
+
     const outageLayer = {
         id: "outage-points",
         type: "circle",
         paint: {
-            "circle-radius": 6,
-            "circle-opacity": 0.85,
+            "circle-radius": scaleByCustomers(POINT_RADIUS_MIN, POINT_RADIUS_MAX),
+            "circle-opacity": 0.95,
             "circle-stroke-width": 1,
-            "circle-stroke-color": "#000",
-
-            "circle-color": [
-                "match",
-                ["get", "status"],
-                "Pending Assessment", "#f59e0b",
-                "Crew Assessing", "#3b82f6",
-                "Planned Outage", "#ef4444",
-                "#10b981"
-            ]
+            "circle-stroke-color": "rgba(0, 0, 0, 0.55)",
+            "circle-color": STATUS_COLOR_EXPRESSION
         }
     } satisfies LayerProps;
 
@@ -172,14 +209,7 @@ function MyMap() {
             "circle-stroke-width": 2,
             "circle-stroke-opacity": 0.9,
 
-            "circle-stroke-color": [
-                "match",
-                ["get", "status"],
-                "Pending Assessment", "#f59e0b",
-                "Crew Assessing", "#3b82f6",
-                "Planned Outage", "#ef4444",
-                "#10b981"
-            ]
+            "circle-stroke-color": STATUS_COLOR_EXPRESSION
         }
     } satisfies LayerProps;
 
@@ -216,6 +246,7 @@ function MyMap() {
 
                     {outageFc && (
                         <Source id="outages" type="geojson" data={outageFc}>
+                            <Layer {...outageHaloLayer} />
                             <Layer {...outageLayer} />
                         </Source>
                     )}

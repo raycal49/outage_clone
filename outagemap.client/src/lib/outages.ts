@@ -62,3 +62,32 @@ export function formatAge(elapsedMs: number): string {
 
     return `${hours}h ${minutes % 60}m`;
 }
+
+/**
+ * Status colours for the point layer, legend and popup chip.
+ *
+ * These are the four statuses the CenterPoint feed actually publishes. Anything
+ * else falls through to UNKNOWN_STATUS_COLOR - a neutral grey, deliberately not
+ * green, so an unrecognised status reads as "unclassified" rather than
+ * impersonating a healthy state.
+ */
+export const STATUS_COLORS: Record<string, string> = {
+    'Pending Assessment': '#f59e0b',
+    'Crew Assessing': '#3b82f6',
+    'Planned Outage': '#ef4444',
+    'Further Assessment Needed': '#8b5cf6'
+};
+
+export const UNKNOWN_STATUS_COLOR = '#94a3b8';
+
+/** Order used wherever statuses are listed, roughly worst-known-state first. */
+export const STATUS_ORDER = [
+    'Pending Assessment',
+    'Further Assessment Needed',
+    'Crew Assessing',
+    'Planned Outage'
+];
+
+export function statusColor(status: string | undefined): string {
+    return (status && STATUS_COLORS[status]) || UNKNOWN_STATUS_COLOR;
+}
