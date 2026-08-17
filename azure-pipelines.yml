@@ -1,34 +1,61 @@
-# ASP.NET Core (.NET Framework)
-# Build and test ASP.NET Core projects targeting the full .NET Framework.
-# Add steps that publish symbols, save build artifacts, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
-
 trigger:
-- master
+- main
 
 pool:
-  vmImage: 'windows-latest'
+  vmImage: 'ubuntu-latest'
 
 variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
+  projects: '**/*.csproj'
+  testProjects: '**/*Tests/*.csproj'
+  clientApp: 'outagemap.client'
 
 steps:
-- task: NuGetToolInstaller@1
 
-- task: NuGetCommand@2
+- task: UseDotNet@2
+  displayName: 'Install .NET SDK'
   inputs:
-    restoreSolution: '$(solution)'
+    packageType: 'sdk'
+    version: '10.0.x'
 
-- task: VSBuild@1
+- task: NodeTool@0
+  displayName: 'Install Node.js'
   inputs:
-    solution: '$(solution)'
-    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+    versionSpec: '22.x'
 
-- task: VSTest@2
+- task: DotNetCoreCLI@2
+  displayName: 'Restore'
   inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+    command: 'restore'
+    projects: '$(projects)'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Build'
+  inputs:
+    command: 'build'
+    projects: '$(projects)'
+    arguments: '--configuration $(buildConfiguration) --no-restore'
+
+- script: mkdir -p "$HOME/.aspnet/https"
+  displayName: 'Create HTTPS certificate directory'
+
+- script: npm ci
+  workingDirectory: '$(clientApp)'
+  displayName: 'npm install'
+
+- script: npm run lint
+  workingDirectory: '$(clientApp)'
+  displayName: 'npm lint'
+
+- script: npm run build
+  workingDirectory: '$(clientApp)'
+  displayName: 'npm build'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Test'
+  inputs:
+    command: 'test'
+    projects: '$(testProjects)'
+    arguments: '--configuration $(buildConfiguration) --no-build'
