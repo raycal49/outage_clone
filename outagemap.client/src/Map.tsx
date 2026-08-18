@@ -20,12 +20,25 @@ const ARRIVAL_RADIUS_TO = 40;
  * swallowing a small one - drawing the small one on top would leave two circles
  * inside each other, which reads as a mistake rather than as data.
  *
- * Depth 15 keeps outages merged almost all the way in. It is identical to any
- * shallower setting until zoom 13, and the map opens at 10.5, so the default
- * view is unaffected either way.
+ * Tuned for a normal day rather than a storm day. The feed usually carries a few
+ * dozen outages, not the hundred-plus of a bad afternoon, so aggressive settings
+ * spent continuity for almost no benefit: points regrouped repeatedly while
+ * zooming and became hard to follow.
+ *
+ * A minimum of three keeps pairs as two visible dots, since hiding two outages
+ * behind one bubble gains nothing, and the shallower depth resolves everything
+ * to individual dots early so zooming settles instead of continuing to
+ * rearrange. Those two do all the work: measured against both a 12-outage day
+ * and the 102-outage fixture, a normal day draws zero clusters at every radius
+ * from 30 to 50.
+ *
+ * The radius therefore stays at 50. Narrowing it changed nothing on a normal
+ * day but gutted a heavy one - at zoom 9 the fixture fell from 16 clusters to
+ * 4, which is close to not clustering at all.
  */
-const CLUSTER_MAX_ZOOM = 15;
+const CLUSTER_MAX_ZOOM = 12;
 const CLUSTER_RADIUS = 50;
+const CLUSTER_MIN_POINTS = 3;
 
 const POINT_RADIUS_MIN = 4;
 const POINT_RADIUS_MAX = 14;
@@ -317,7 +330,9 @@ function MyMap() {
 
         const config: Record<string, unknown> = {
             lightPreset: "night",
-            showPointOfInterestLabels: false
+            showPointOfInterestLabels: false,
+            showRoadLabels: false,
+            showTransitLabels: false
         };
 
         for (const [key, value] of Object.entries(config)) {
@@ -397,6 +412,7 @@ function MyMap() {
                             cluster={true}
                             clusterRadius={CLUSTER_RADIUS}
                             clusterMaxZoom={CLUSTER_MAX_ZOOM}
+                            clusterMinPoints={CLUSTER_MIN_POINTS}
                             clusterProperties={{ customers: ["+", ["coalesce", ["get", "numPeople"], 0]] }}
                         >
                             <Layer {...outageHaloLayer} />
