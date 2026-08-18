@@ -45,16 +45,14 @@ export default function OutagePopup({ outage }: OutagePopupProps) {
 
     return (
         <div
-            className="popup flex w-[246px] flex-col gap-[11px] leading-[normal] rounded-[10px] border border-ui-border
-                       bg-ui-surface-solid px-[14px] py-[13px] font-ui-sans text-ui-text
-                       shadow-ui-popup backdrop-blur-[14px] backdrop-saturate-[1.3]"
+            className="popup flex w-60 flex-col gap-3 rounded-lg border border-ui-border
+                       bg-ui-surface-solid p-3.5 font-ui-sans text-ui-text shadow-popup backdrop-blur-md"
         >
             {/* pr clears the Mapbox close button, which is positioned over this row */}
-            <div className="flex items-center justify-between gap-2.5 pr-[18px]">
+            <div className="flex items-center pr-5">
                 <span
-                    className="inline-flex items-center gap-1.5 rounded-[999px] border py-1 pr-[9px]
-                               pl-[7px] font-ui-mono text-[10px] leading-[1.25] tracking-[.06em]
-                               whitespace-nowrap uppercase"
+                    className="inline-flex items-center gap-1.5 rounded-full border py-1 pr-2.5 pl-2
+                               font-ui-mono text-2xs leading-tight tracking-wider whitespace-nowrap uppercase"
                     style={{ color, borderColor: `${color}66`, background: `${color}1f` }}
                 >
                     <span className="size-1.5 shrink-0 rounded-full" style={{ background: color }} />
@@ -62,23 +60,23 @@ export default function OutagePopup({ outage }: OutagePopupProps) {
                 </span>
             </div>
 
-            <div className="flex flex-col gap-px">
-                <span className="font-ui-mono text-[25px] leading-[1.05] tracking-[-.02em] tabular-nums">
+            <div className="flex flex-col">
+                <span className="font-ui-mono text-2xl leading-none tracking-tight tabular-nums">
                     {formatRelativeEtr(properties.etrTime)}
                 </span>
-                <span className="font-ui-mono text-[9.5px] tracking-[.12em] uppercase text-white/42">
+                <span className="font-ui-mono text-2xs tracking-widest uppercase text-white/40">
                     Estimated restoration
                 </span>
             </div>
 
             {rows.length > 0 && (
-                <dl className="m-0 flex flex-col gap-[5px] border-t border-white/10 pt-2.5">
+                <dl className="flex flex-col gap-1.5 border-t border-white/10 pt-2.5">
                     {rows.map(row => (
                         <div key={row.label} className="flex items-baseline justify-between gap-3">
-                            <dt className="font-ui-mono text-[9.5px] tracking-[.11em] whitespace-nowrap uppercase text-white/42">
+                            <dt className="font-ui-mono text-2xs tracking-widest whitespace-nowrap uppercase text-white/40">
                                 {row.label}
                             </dt>
-                            <dd className="m-0 text-right text-[12px] text-white/93">{row.value}</dd>
+                            <dd className="text-right text-xs text-white/95">{row.value}</dd>
                         </div>
                     ))}
                 </dl>

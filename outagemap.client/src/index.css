@@ -1,7 +1,9 @@
 @import "tailwindcss";
 
 /*
- * Overlay design tokens.
+ * Project-specific design tokens. Everything else - spacing, type sizes,
+ * tracking, radii, blur - uses Tailwind's built-in scale rather than one-off
+ * values, so the components read as ordinary Tailwind.
  *
  * These surfaces sit on top of the dark-v11 basemap rather than on the page, so
  * they are deliberately fixed dark glass and do not follow any light/dark theme.
@@ -12,17 +14,21 @@
     --color-ui-border: rgba(255, 255, 255, .13);
     --color-ui-text: #e9e7f2;
 
-    --font-ui-mono: ui-monospace, "SF Mono", SFMono-Regular, "Cascadia Mono", Menlo, Consolas, monospace;
-    --font-ui-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-
-    --shadow-ui-panel: 0 14px 34px -14px rgba(0, 0, 0, .8);
-    --shadow-ui-popup: 0 16px 38px -14px rgba(0, 0, 0, .85);
-
     /* Connection states for the status pill. Outage status colours are not here:
        they are data-driven from src/lib/outages.ts and applied inline. */
     --color-state-live: #10b981;
     --color-state-warn: #f59e0b;
     --color-state-down: #94a3b8;
+
+    --font-ui-mono: ui-monospace, "SF Mono", SFMono-Regular, "Cascadia Mono", Menlo, Consolas, monospace;
+    --font-ui-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+    /* One step below Tailwind's smallest (text-xs is 12px), for the uppercase
+       micro-labels on the panel and popup. */
+    --text-2xs: 0.625rem;
+
+    --shadow-panel: 0 14px 34px -14px rgba(0, 0, 0, .8);
+    --shadow-popup: 0 16px 38px -14px rgba(0, 0, 0, .85);
 
     --animate-beacon: beacon 2000ms ease-out infinite;
 
