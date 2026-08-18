@@ -40,26 +40,50 @@ const CLUSTER_MAX_ZOOM = 12;
 const CLUSTER_RADIUS = 50;
 const CLUSTER_MIN_POINTS = 3;
 
-const POINT_RADIUS_MIN = 4;
-const POINT_RADIUS_MAX = 14;
-const HALO_RADIUS_MIN = 11;
-const HALO_RADIUS_MAX = 40;
+const POINT_RADIUS_MIN = 7;
+const POINT_RADIUS_MAX = 20;
+const HALO_RADIUS_MIN = 18;
+const HALO_RADIUS_MAX = 50;
 
-/**
- * Observed range of numPeople in the CenterPoint feed. Radius is interpolated
- * against sqrt(numPeople) so that a circle's *area*, not its radius, tracks the
- * customer count - scaling radius linearly would badly over-weight large outages.
+/*
+ * Radius is interpolated against sqrt(numPeople) so a circle's *area*, not its
+ * radius, tracks the customer count - scaling radius linearly would badly
+ * over-weight large outages.
+ *
+ * The ceiling is a deliberate clamp, not the observed maximum. It was originally
+ * 182, taken from a storm-day fixture, which meant an ordinary day (largest
+ * outage around 66 customers) only ever used the bottom half of the scale and
+ * every dot came out roughly the same size. Anything past the ceiling simply
+ * reads as "very large", which is all the distinction that is needed up there.
  */
 const CUSTOMERS_MIN = 1;
-const CUSTOMERS_MAX = 182;
+const CUSTOMERS_MAX = 80;
+
+/*
+ * Dots also grow with zoom. A fixed pixel radius looks progressively smaller as
+ * the map zooms in, because everything around it gains detail while the dot does
+ * not. Zoom must be the outermost interpolation for a zoom-and-data expression.
+ */
+const ZOOM_SCALE_MIN = 9;
+const ZOOM_SCALE_MAX = 15;
+const ZOOM_SCALE_AT_MIN = 0.85;
+const ZOOM_SCALE_AT_MAX = 1.3;
 
 function scaleByCustomers(minRadius: number, maxRadius: number): ExpressionSpecification {
-    return [
+    const atZoom = (factor: number): ExpressionSpecification => [
         "interpolate",
         ["linear"],
         ["sqrt", ["coalesce", ["get", "numPeople"], CUSTOMERS_MIN]],
-        Math.sqrt(CUSTOMERS_MIN), minRadius,
-        Math.sqrt(CUSTOMERS_MAX), maxRadius
+        Math.sqrt(CUSTOMERS_MIN), minRadius * factor,
+        Math.sqrt(CUSTOMERS_MAX), maxRadius * factor
+    ];
+
+    return [
+        "interpolate",
+        ["linear"],
+        ["zoom"],
+        ZOOM_SCALE_MIN, atZoom(ZOOM_SCALE_AT_MIN),
+        ZOOM_SCALE_MAX, atZoom(ZOOM_SCALE_AT_MAX)
     ];
 }
 
@@ -239,7 +263,11 @@ function MyMap() {
             "circle-color": "rgba(15, 14, 20, 0.86)",
             "circle-stroke-width": 2,
             "circle-stroke-color": "#f1f5f9",
-            "circle-radius": ["step", ["get", "point_count"], 14, 5, 18, 15, 24, 30, 30]
+            // Interpolated rather than stepped: a step expression snaps the bubble
+            // between fixed sizes as a cluster gains or loses members while zooming,
+            // which is most of what reads as jitter. The transition eases the rest.
+            "circle-radius": ["interpolate", ["linear"], ["get", "point_count"], 3, 16, 10, 22, 30, 30],
+            "circle-radius-transition": { duration: 300 }
         }
     } satisfies LayerProps;
 
@@ -369,7 +397,7 @@ function MyMap() {
 
             source?.getClusterExpansionZoom(clusterId, (error, zoom) => {
                 if (error || zoom == null) return;
-                mapRef.current?.easeTo({ center: [lng, lat], zoom, duration: 500 });
+                mapRef.current?.easeTo({ center: [lng, lat], zoom, duration: 700 });
             });
 
             closePopup();
