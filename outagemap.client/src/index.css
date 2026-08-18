@@ -5,12 +5,14 @@
  * tracking, radii, blur - uses Tailwind's built-in scale rather than one-off
  * values, so the components read as ordinary Tailwind.
  *
- * These surfaces sit on top of the dark-v11 basemap rather than on the page, so
- * they are deliberately fixed dark glass and do not follow any light/dark theme.
+ * These surfaces sit on top of the basemap rather than on the page, so they are
+ * deliberately fixed dark glass and do not follow any light/dark theme. The alpha
+ * values are low enough that the backdrop blur is actually visible - at .93 the
+ * popup was opaque enough that blurring 7% of the map showed nothing.
  */
 @theme {
-    --color-ui-surface: rgba(13, 12, 18, .78);
-    --color-ui-surface-solid: rgba(15, 14, 20, .93);
+    --color-ui-surface: rgba(13, 12, 18, .70);
+    --color-ui-surface-solid: rgba(15, 14, 20, .82);
     --color-ui-border: rgba(255, 255, 255, .13);
     --color-ui-text: #e9e7f2;
 

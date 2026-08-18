@@ -4,7 +4,7 @@ import { HubConnectionBuilder } from '@microsoft/signalr';
 import StatusPill from './components/StatusPill';
 import OutageStats from './components/OutageStats';
 import OutagePopup from './components/OutagePopup';
-import type { ExpressionSpecification } from 'mapbox-gl';
+import type { ExpressionSpecification, GeoJSONSource } from 'mapbox-gl';
 import { collectIds, featuresWithNewIds, summariseOutages, STATUS_COLORS, UNKNOWN_STATUS_COLOR, type ConnectionState, type OutageCollection, type OutageFeature } from './lib/outages';
 import './mapbox-overrides.css';
 
@@ -14,6 +14,18 @@ const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
 const ARRIVAL_MS = 1600;
 const ARRIVAL_RADIUS_FROM = 6;
 const ARRIVAL_RADIUS_TO = 40;
+
+/*
+ * Clustering. Merging co-located outages is the only way to stop a large dot
+ * swallowing a small one - drawing the small one on top would leave two circles
+ * inside each other, which reads as a mistake rather than as data.
+ *
+ * Depth 15 keeps outages merged almost all the way in. It is identical to any
+ * shallower setting until zoom 13, and the map opens at 10.5, so the default
+ * view is unaffected either way.
+ */
+const CLUSTER_MAX_ZOOM = 15;
+const CLUSTER_RADIUS = 50;
 
 const POINT_RADIUS_MIN = 4;
 const POINT_RADIUS_MAX = 14;
@@ -144,6 +156,21 @@ function MyMap() {
         };
     }, []);
 
+    // Escape closes the popup, matching the dialog convention.
+    useEffect(() => {
+        if (!selectedOutage) return;
+
+        const onKey = (e: KeyboardEvent) => {
+            if (e.key === "Escape") {
+                setSelectedOutage(null);
+                setPopupLngLat(null);
+            }
+        };
+
+        window.addEventListener("keydown", onKey);
+        return () => window.removeEventListener("keydown", onKey);
+    }, [selectedOutage]);
+
     // Expand and fade the arrival rings. Driven by setPaintProperty rather than React
     // state so the animation never re-renders the map.
     useEffect(() => {
@@ -178,9 +205,42 @@ function MyMap() {
         return () => cancelAnimationFrame(frame);
     }, [arrivals]);
 
+    /*
+     * Cluster bubble: dark centre, bright rim. On this near-black basemap a pale
+     * translucent fill reads as a smudge, so the separation comes from a hard
+     * bright edge - the same halo logic the basemap's own labels use. Kept
+     * achromatic on purpose: every violet and magenta candidate collided with the
+     * blue "Crew Assessing" status under colour-vision simulation, and a coloured
+     * cluster would imply a status that a mixed group does not have.
+     */
+    const clusterLayer = {
+        id: "outage-clusters",
+        type: "circle",
+        filter: ["has", "point_count"],
+        paint: {
+            "circle-color": "rgba(15, 14, 20, 0.86)",
+            "circle-stroke-width": 2,
+            "circle-stroke-color": "#f1f5f9",
+            "circle-radius": ["step", ["get", "point_count"], 14, 5, 18, 15, 24, 30, 30]
+        }
+    } satisfies LayerProps;
+
+    const clusterCountLayer = {
+        id: "outage-cluster-count",
+        type: "symbol",
+        filter: ["has", "point_count"],
+        layout: {
+            "text-field": ["get", "point_count_abbreviated"],
+            "text-font": ["DIN Offc Pro Medium", "Arial Unicode MS Bold"],
+            "text-size": 12
+        },
+        paint: { "text-color": "#f1f5f9" }
+    } satisfies LayerProps;
+
     const outageHaloLayer = {
         id: "outage-halos",
         type: "circle",
+        filter: ["!", ["has", "point_count"]],
         paint: {
             "circle-radius": scaleByCustomers(HALO_RADIUS_MIN, HALO_RADIUS_MAX),
             "circle-color": STATUS_COLOR_EXPRESSION,
@@ -192,6 +252,7 @@ function MyMap() {
     const outageLayer = {
         id: "outage-points",
         type: "circle",
+        filter: ["!", ["has", "point_count"]],
         paint: {
             "circle-radius": scaleByCustomers(POINT_RADIUS_MIN, POINT_RADIUS_MAX),
             "circle-opacity": 0.95,
@@ -216,15 +277,74 @@ function MyMap() {
         }
     } satisfies LayerProps;
 
+    /*
+     * Mapbox Standard exposes its look through style config rather than through a
+     * separate style URL. The night preset supplies the slight cool cast that the
+     * legacy dark style lacks; monochrome and hiding POI labels keep the ground
+     * recessive so the outage dots stay the brightest thing on screen.
+     *
+     * These keys are declared by the style itself, not by mapbox-gl, so an
+     * unrecognised one is tolerated rather than allowed to break the map.
+     */
+    const applyBasemapConfig = () => {
+        const map = mapRef.current?.getMap();
+        if (!map) return;
+
+        const config: Record<string, unknown> = {
+            lightPreset: "night",
+            theme: "monochrome",
+            showPointOfInterestLabels: false
+        };
+
+        for (const [key, value] of Object.entries(config)) {
+            try {
+                map.setConfigProperty("basemap", key, value);
+            } catch (error) {
+                console.warn(`basemap config "${key}" not applied`, error);
+            }
+        }
+    };
+
+    const closePopup = () => {
+        setSelectedOutage(null);
+        setPopupLngLat(null);
+    };
+
     const handleMapClick = (e: MapMouseEvent) => {
+        const feature = e.features?.[0];
 
-        const f = e.features?.[0] as OutageFeature | undefined;
-        if (!f) return;
+        // Clicking bare map dismisses the popup. Mapbox's own closeOnClick is left
+        // off because it races with opening a new popup when moving point to point.
+        if (!feature) {
+            closePopup();
+            return;
+        }
 
-        const [lng, lat] = (f.geometry as GeoJSON.Point).coordinates as [number, number];
+        const [lng, lat] = (feature.geometry as GeoJSON.Point).coordinates as [number, number];
 
-        setSelectedOutage(f);
+        // A cluster is not an outage - zoom to the point where it breaks apart.
+        const clusterId = feature.properties?.cluster_id;
+
+        if (typeof clusterId === "number") {
+            const source = mapRef.current?.getSource("outages") as GeoJSONSource | undefined;
+
+            source?.getClusterExpansionZoom(clusterId, (error, zoom) => {
+                if (error || zoom == null) return;
+                mapRef.current?.easeTo({ center: [lng, lat], zoom, duration: 500 });
+            });
+
+            closePopup();
+            return;
+        }
+
+        setSelectedOutage(feature as OutageFeature);
         setPopupLngLat({ lng, lat });
+    };
+
+    // Pointer feedback so clusters and dots read as clickable.
+    const handleMapMove = (e: MapMouseEvent) => {
+        const map = mapRef.current?.getMap();
+        if (map) map.getCanvas().style.cursor = e.features?.length ? "pointer" : "";
     };
 
     return (
@@ -234,19 +354,31 @@ function MyMap() {
                     ref={mapRef}
                     {...viewState}
                     onMove={(evt) => setViewState(evt.viewState)}
-                    mapStyle="mapbox://styles/mapbox/dark-v11"
+                    mapStyle="mapbox://styles/mapbox/standard"
                     mapboxAccessToken={MAPBOX_TOKEN}
                     attributionControl={false}
                     logoPosition="bottom-right"
                     hash={true}
                     reuseMaps={true}
-                    interactiveLayerIds={["outage-points"]}
+                    interactiveLayerIds={["outage-points", "outage-clusters"]}
                     onClick={handleMapClick}
+                    onMouseMove={handleMapMove}
+                    onLoad={applyBasemapConfig}
                 >
                     {outageFc && (
-                        <Source id="outages" type="geojson" data={outageFc}>
+                        <Source
+                            id="outages"
+                            type="geojson"
+                            data={outageFc}
+                            cluster={true}
+                            clusterRadius={CLUSTER_RADIUS}
+                            clusterMaxZoom={CLUSTER_MAX_ZOOM}
+                            clusterProperties={{ customers: ["+", ["coalesce", ["get", "numPeople"], 0]] }}
+                        >
                             <Layer {...outageHaloLayer} />
                             <Layer {...outageLayer} />
+                            <Layer {...clusterLayer} />
+                            <Layer {...clusterCountLayer} />
                         </Source>
                     )}
 
