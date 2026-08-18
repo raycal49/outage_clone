@@ -40,10 +40,10 @@ const CLUSTER_MAX_ZOOM = 12;
 const CLUSTER_RADIUS = 50;
 const CLUSTER_MIN_POINTS = 3;
 
-const POINT_RADIUS_MIN = 7;
-const POINT_RADIUS_MAX = 20;
-const HALO_RADIUS_MIN = 18;
-const HALO_RADIUS_MAX = 50;
+const POINT_RADIUS_MIN = 5;
+const POINT_RADIUS_MAX = 13;
+const HALO_RADIUS_MIN = 12;
+const HALO_RADIUS_MAX = 32;
 
 /*
  * Radius is interpolated against sqrt(numPeople) so a circle's *area*, not its
@@ -60,30 +60,27 @@ const CUSTOMERS_MIN = 1;
 const CUSTOMERS_MAX = 80;
 
 /*
- * Dots also grow with zoom. A fixed pixel radius looks progressively smaller as
- * the map zooms in, because everything around it gains detail while the dot does
- * not. Zoom must be the outermost interpolation for a zoom-and-data expression.
+ * The interpolation stops have to be given in the same units as its input, and
+ * the input is square-rooted - so these are sqrt(customers), not customers.
+ * Putting the raw counts in the stops would not error, it would just produce
+ * quietly wrong sizes, which is worth a name rather than a bare Math.sqrt call.
  */
-const ZOOM_SCALE_MIN = 9;
-const ZOOM_SCALE_MAX = 15;
-const ZOOM_SCALE_AT_MIN = 0.85;
-const ZOOM_SCALE_AT_MAX = 1.3;
+const CUSTOMER_SCALE_MIN = Math.sqrt(CUSTOMERS_MIN);
+const CUSTOMER_SCALE_MAX = Math.sqrt(CUSTOMERS_MAX);
 
+/*
+ * Radius does not vary with zoom. Growing dots as the map zooms in was tried and
+ * removed: it worked directly against clustering, which stops at zoom 12, so dots
+ * reached their largest exactly where nothing was left to keep them apart, and a
+ * big outage began occluding a neighbouring small one again.
+ */
 function scaleByCustomers(minRadius: number, maxRadius: number): ExpressionSpecification {
-    const atZoom = (factor: number): ExpressionSpecification => [
-        "interpolate",
-        ["linear"],
-        ["sqrt", ["coalesce", ["get", "numPeople"], CUSTOMERS_MIN]],
-        Math.sqrt(CUSTOMERS_MIN), minRadius * factor,
-        Math.sqrt(CUSTOMERS_MAX), maxRadius * factor
-    ];
-
     return [
         "interpolate",
         ["linear"],
-        ["zoom"],
-        ZOOM_SCALE_MIN, atZoom(ZOOM_SCALE_AT_MIN),
-        ZOOM_SCALE_MAX, atZoom(ZOOM_SCALE_AT_MAX)
+        ["sqrt", ["coalesce", ["get", "numPeople"], CUSTOMERS_MIN]],
+        CUSTOMER_SCALE_MIN, minRadius,
+        CUSTOMER_SCALE_MAX, maxRadius
     ];
 }
 
@@ -312,8 +309,8 @@ function MyMap() {
             "circle-emissive-strength": 1,
             "circle-radius": scaleByCustomers(POINT_RADIUS_MIN, POINT_RADIUS_MAX),
             "circle-opacity": 0.95,
-            "circle-stroke-width": 1,
-            "circle-stroke-color": "rgba(0, 0, 0, 0.55)",
+            "circle-stroke-width": 1.5,
+            "circle-stroke-color": "rgba(0, 0, 0, 0.7)",
             "circle-color": STATUS_COLOR_EXPRESSION
         }
     } satisfies LayerProps;
