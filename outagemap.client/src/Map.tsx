@@ -218,6 +218,11 @@ function MyMap() {
         type: "circle",
         filter: ["has", "point_count"],
         paint: {
+            // Mapbox Standard lights the scene in 3D and circle-emissive-strength
+            // defaults to 0, so at the night preset these render almost black
+            // whatever circle-color says. Symbol layers default to 1, which is why
+            // the cluster count stayed legible while the dots did not.
+            "circle-emissive-strength": 1,
             "circle-color": "rgba(15, 14, 20, 0.86)",
             "circle-stroke-width": 2,
             "circle-stroke-color": "#f1f5f9",
@@ -242,6 +247,11 @@ function MyMap() {
         type: "circle",
         filter: ["!", ["has", "point_count"]],
         paint: {
+            // Mapbox Standard lights the scene in 3D and circle-emissive-strength
+            // defaults to 0, so at the night preset these render almost black
+            // whatever circle-color says. Symbol layers default to 1, which is why
+            // the cluster count stayed legible while the dots did not.
+            "circle-emissive-strength": 1,
             "circle-radius": scaleByCustomers(HALO_RADIUS_MIN, HALO_RADIUS_MAX),
             "circle-color": STATUS_COLOR_EXPRESSION,
             "circle-opacity": 0.3,
@@ -254,6 +264,11 @@ function MyMap() {
         type: "circle",
         filter: ["!", ["has", "point_count"]],
         paint: {
+            // Mapbox Standard lights the scene in 3D and circle-emissive-strength
+            // defaults to 0, so at the night preset these render almost black
+            // whatever circle-color says. Symbol layers default to 1, which is why
+            // the cluster count stayed legible while the dots did not.
+            "circle-emissive-strength": 1,
             "circle-radius": scaleByCustomers(POINT_RADIUS_MIN, POINT_RADIUS_MAX),
             "circle-opacity": 0.95,
             "circle-stroke-width": 1,
@@ -268,6 +283,11 @@ function MyMap() {
         id: "outage-arrivals",
         type: "circle",
         paint: {
+            // Mapbox Standard lights the scene in 3D and circle-emissive-strength
+            // defaults to 0, so at the night preset these render almost black
+            // whatever circle-color says. Symbol layers default to 1, which is why
+            // the cluster count stayed legible while the dots did not.
+            "circle-emissive-strength": 1,
             "circle-radius": ARRIVAL_RADIUS_FROM,
             "circle-opacity": 0,
             "circle-stroke-width": 2,
