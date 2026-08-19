@@ -1,11 +1,40 @@
-/* make the page fill the viewport and remove default margins */
-html, body, #root {
-    height: 100%;
-    margin: 0;
+@import "tailwindcss";
+
+
+@theme {
+    --color-ui-surface: rgba(13, 12, 18, .70);
+    --color-ui-surface-solid: rgba(15, 14, 20, .82);
+    --color-ui-border: rgba(255, 255, 255, .13);
+    --color-ui-text: #e9e7f2;
+    --color-state-live: #10b981;
+    --color-state-warn: #f59e0b;
+    --color-state-down: #94a3b8;
+
+    --font-ui-mono: ui-monospace, "SF Mono", SFMono-Regular, "Cascadia Mono", Menlo, Consolas, monospace;
+    --font-ui-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --text-2xs: 0.625rem;
+
+    --shadow-panel: 0 14px 34px -14px rgba(0, 0, 0, .8);
+    --shadow-popup: 0 16px 38px -14px rgba(0, 0, 0, .85);
+
+    --animate-beacon: beacon 2000ms ease-out infinite;
+
+    @keyframes beacon {
+        0%   { box-shadow: 0 0 0 0 rgba(16, 185, 129, .55); }
+        70%  { box-shadow: 0 0 0 7px rgba(16, 185, 129, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
 }
 
-/* make the map fill the screen */
-#map-container {
-    width: 100%;
+
+html,
+body,
+#root {
     height: 100%;
+}
+
+.mapdiv {
+    position: relative;
+    height: 100%;
+    width: 100%;
 }
