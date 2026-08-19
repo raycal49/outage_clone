@@ -40,9 +40,6 @@ export default function OutagePopup({ outage }: OutagePopupProps) {
     const age = formatOutageAge(properties.startTime);
     if (age) rows.push({ label: 'Out for', value: age });
 
-    if (typeof properties.id === 'number')
-        rows.push({ label: 'ID', value: `#${properties.id}` });
-
     return (
         <div
             className="popup flex w-60 flex-col gap-3 rounded-lg border border-ui-border
