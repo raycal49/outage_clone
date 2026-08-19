@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { formatAge, type ConnectionState } from '../lib/outages';
+import { formatAge } from '@/lib/format';
+import type { ConnectionState } from '@/lib/outageHub';
 
 type StatusPillProps = {
     state: ConnectionState;

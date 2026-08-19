@@ -19,6 +19,27 @@ export function formatDuration(ms: number): string {
     return `${days}d ${Math.round((total % DAY) / HOUR)}h`;
 }
 
+/*
+ * Compact elapsed time for the connection pill: "8s", "4m", "1h 12m".
+ *
+ * Deliberately not formatDuration: this one has a seconds tier and no days tier,
+ * because a feed that has been quiet for a day is a different problem than a
+ * label can express, whereas seconds matter right after an update lands.
+ */
+export function formatAge(elapsedMs: number): string {
+    const seconds = Math.max(0, Math.floor(elapsedMs / 1000));
+
+    if (seconds < 60) return `${seconds}s`;
+
+    const minutes = Math.floor(seconds / 60);
+
+    if (minutes < 60) return `${minutes}m`;
+
+    const hours = Math.floor(minutes / 60);
+
+    return `${hours}h ${minutes % 60}m`;
+}
+
 /**
  * Time remaining until estimated restoration.
  *

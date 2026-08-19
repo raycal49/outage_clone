@@ -20,9 +20,6 @@ export type OutageProperties = {
 export type OutageFeature = Feature<Point, OutageProperties>;
 export type OutageCollection = FeatureCollection<Point, OutageProperties>;
 
-/** Whether the SignalR hub is currently delivering updates. */
-export type ConnectionState = 'connecting' | 'live' | 'reconnecting' | 'offline';
-
 /** The set of source ids present in a payload, used to spot new arrivals. */
 export function collectIds(fc: OutageCollection): Set<number> {
     const ids = new Set<number>();
@@ -46,21 +43,6 @@ export function featuresWithNewIds(fc: OutageCollection, previousIds: Set<number
         const id = feature.properties?.id;
         return typeof id === 'number' && !previousIds.has(id);
     });
-}
-
-/** Compact elapsed time for the connection pill: "8s", "4m", "1h 12m". */
-export function formatAge(elapsedMs: number): string {
-    const seconds = Math.max(0, Math.floor(elapsedMs / 1000));
-
-    if (seconds < 60) return `${seconds}s`;
-
-    const minutes = Math.floor(seconds / 60);
-
-    if (minutes < 60) return `${minutes}m`;
-
-    const hours = Math.floor(minutes / 60);
-
-    return `${hours}h ${minutes % 60}m`;
 }
 
 /**

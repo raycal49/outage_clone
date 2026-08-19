@@ -1,5 +1,5 @@
 import { Area, AreaChart, ResponsiveContainer, Tooltip } from 'recharts';
-import type { OutageSummary, TrendBucket } from '../lib/outages';
+import type { OutageSummary, TrendBucket } from '@/lib/outages';
 
 type OutageStatsProps = {
     summary: OutageSummary;

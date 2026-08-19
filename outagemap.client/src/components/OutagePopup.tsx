@@ -1,5 +1,5 @@
-import { formatOutageAge, formatRelativeEtr, toTitleCase } from '../lib/format';
-import { statusColor, UNCLASSIFIED_STATUS, type OutageFeature } from '../lib/outages';
+import { formatOutageAge, formatRelativeEtr, toTitleCase } from '@/lib/format';
+import { statusColor, UNCLASSIFIED_STATUS, type OutageFeature } from '@/lib/outages';
 
 type OutagePopupProps = {
     outage: OutageFeature;
