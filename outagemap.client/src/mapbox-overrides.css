@@ -1,12 +1,3 @@
-/*
- * Styling for DOM that Mapbox GL creates, not our JSX.
- *
- * Utility classes cannot reach these elements - mapbox-gl builds and injects
- * them itself - so this is the residue that survives the Tailwind conversion.
- * Everything else that used to live here is now utilities on the components.
- */
-
-/* Strip the default popup chrome so the card inside is the whole visual. */
 .popup-shell .mapboxgl-popup-content {
     background: transparent;
     padding: 0;
@@ -34,17 +25,6 @@
     background: transparent;
 }
 
-/*
- * Attribution and the Mapbox wordmark.
- *
- * These MUST stay visible: displaying them is a condition of the Mapbox terms
- * while using their tiles, and the OpenStreetMap data underneath carries its own
- * attribution requirement. Compacting (via <AttributionControl compact />),
- * repositioning and dimming are all permitted; hiding them is not.
- *
- * Dimmed so they recede against the dark basemap, returning to full strength on
- * hover or keyboard focus so they stay readable the moment anyone looks.
- */
 .mapboxgl-ctrl-attrib,
 .mapboxgl-ctrl-logo {
     opacity: .6;
