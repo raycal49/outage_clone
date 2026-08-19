@@ -21,13 +21,6 @@ const BEACONS: Record<ConnectionState, string> = {
     offline: 'bg-state-down'
 };
 
-/**
- * Connection and freshness readout for the live outage feed.
- *
- * The feed publishes on a ~10 minute cadence, so this is the part of the UI that
- * tells a viewer the data is current between updates. It owns its own clock so
- * ticking the age label re-renders the pill rather than the whole map.
- */
 export default function StatusPill({ state, lastUpdatedAt }: StatusPillProps) {
     const [now, setNow] = useState(() => Date.now());
 

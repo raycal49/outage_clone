@@ -7,13 +7,6 @@ type OutagePopupProps = {
 
 type Row = { label: string; value: string };
 
-/**
- * Detail for a single outage.
- *
- * Rows whose value the feed did not send are omitted rather than rendered with
- * a placeholder: cause is null on roughly two thirds of records, so a row that
- * is permanently empty would read as a bug rather than as missing data.
- */
 export default function OutagePopup({ outage }: OutagePopupProps) {
     const properties = outage.properties ?? {};
     const status = properties.status ?? UNCLASSIFIED_STATUS;
@@ -24,8 +17,6 @@ export default function OutagePopup({ outage }: OutagePopupProps) {
     if (typeof properties.numPeople === 'number')
         rows.push({ label: 'Customers', value: properties.numPeople.toLocaleString() });
 
-    // Cause is frequently just a restatement of the status ("Planned Outage"),
-    // which tells the reader nothing they cannot already see on the chip.
     const cause = toTitleCase(properties.cause);
     if (cause && cause.toLowerCase() !== status.toLowerCase())
         rows.push({ label: 'Cause', value: cause });
@@ -45,7 +36,7 @@ export default function OutagePopup({ outage }: OutagePopupProps) {
             className="popup flex w-60 flex-col gap-3 rounded-lg border border-ui-border
                        bg-ui-surface-solid p-3.5 font-ui-sans text-ui-text shadow-popup backdrop-blur-md"
         >
-            {/* pr clears the Mapbox close button, which is positioned over this row */}
+            {}
             <div className="flex items-center pr-5">
                 <span
                     className="inline-flex items-center gap-1.5 rounded-full border py-1 pr-2.5 pl-2

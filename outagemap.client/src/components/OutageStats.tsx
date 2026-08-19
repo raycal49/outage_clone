@@ -5,7 +5,6 @@ type OutageStatsProps = {
     summary: OutageSummary;
 };
 
-/** Neutral ink, not a status colour - the trend is the total, not a category. */
 const TREND_INK = '#e2e8f0';
 
 const CAP = 'font-ui-mono text-2xs tracking-widest uppercase text-white/50';
@@ -27,12 +26,6 @@ function TrendTooltip({ active, payload }: {
     );
 }
 
-/**
- * Summary of the current outage payload, drawn over the map.
- *
- * Every figure is derived from the FeatureCollection already held in state, so
- * the panel refreshes on each SignalR push without any extra request.
- */
 export default function OutageStats({ summary }: OutageStatsProps) {
     const { total, customers, largest, byStatus, trend } = summary;
     const hasTrend = trend.some(bucket => bucket.count > 0);

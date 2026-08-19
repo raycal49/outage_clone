@@ -38,7 +38,6 @@ function OutageMap() {
 
     useArrivalPulse(mapRef, arrivals);
 
-    // Recomputed only when a new payload lands, not on every map pan.
     const summary = useMemo(() => summariseOutages(outages, lastUpdatedAt ?? Date.now()), [outages, lastUpdatedAt]);
 
     const handleMapLoad = () => {
@@ -49,8 +48,6 @@ function OutageMap() {
     const handleMapClick = (e: MapMouseEvent) => {
         const feature = e.features?.[0];
 
-        // Clicking bare map dismisses the popup. Mapbox's own closeOnClick is left
-        // off because it races with opening a new popup when moving point to point.
         if (!feature) {
             close();
             return;
@@ -58,7 +55,6 @@ function OutageMap() {
 
         const [lng, lat] = (feature.geometry as GeoJSON.Point).coordinates as [number, number];
 
-        // A cluster is not an outage - zoom to the point where it breaks apart.
         const clusterId = feature.properties?.cluster_id;
 
         if (typeof clusterId === "number") {
@@ -71,7 +67,6 @@ function OutageMap() {
         select(feature as OutageFeature, { lng, lat });
     };
 
-    // Pointer feedback so clusters and dots read as clickable.
     const handleMapMove = (e: MapMouseEvent) => {
         const map = mapRef.current?.getMap();
         if (map) map.getCanvas().style.cursor = e.features?.length ? "pointer" : "";

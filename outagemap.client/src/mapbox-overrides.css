@@ -37,3 +37,34 @@
 .mapboxgl-ctrl-logo:focus-within {
     opacity: 1;
 }
+
+/* Dark glassy Mapbox controls */
+.mapboxgl-ctrl-top-right .mapboxgl-ctrl-group {
+    background: rgba(18, 17, 20, 0.88);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+    /* Keep each button transparent */
+    .mapboxgl-ctrl-top-right .mapboxgl-ctrl-group button {
+        background: transparent;
+    }
+
+/* White symbols/icons */
+.mapboxgl-ctrl-top-right .mapboxgl-ctrl-icon {
+    filter: brightness(0) invert(1);
+}
+
+/* Subtle separators */
+.mapboxgl-ctrl-top-right .mapboxgl-ctrl-group button + button {
+    border-top-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Glassy hover */
+.mapboxgl-ctrl-top-right
+.mapboxgl-ctrl-group
+button:not(:disabled):hover {
+    background: rgba(255, 255, 255, 0.08);
+}
