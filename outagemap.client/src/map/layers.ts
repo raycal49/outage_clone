@@ -5,7 +5,7 @@ import { STATUS_COLORS, UNKNOWN_STATUS_COLOR } from '@/lib/outages';
 export const ARRIVAL_RADIUS_FROM = 6;
 export const ARRIVAL_RADIUS_TO = 40;
 
-export const CLUSTER_MAX_ZOOM = 12;
+export const CLUSTER_MAX_ZOOM = 9;
 export const CLUSTER_RADIUS = 50;
 export const CLUSTER_MIN_POINTS = 3;
 
@@ -40,16 +40,29 @@ const STATUS_COLOR_EXPRESSION: ExpressionSpecification = [
     UNKNOWN_STATUS_COLOR
 ];
 
+export const clusterHaloLayer = {
+    id: "outage-cluster-halos",
+    type: "circle",
+    filter: ["has", "point_count"],
+    paint: {
+        "circle-emissive-strength": 1,
+        "circle-radius": ["interpolate", ["linear"], ["get", "point_count"], 3, 20, 10, 25, 30, 32],
+        "circle-color": "#e2e8f0",
+        "circle-opacity": 0.13,
+        "circle-blur": 0.8
+    }
+} satisfies LayerProps;
+
 export const clusterLayer = {
     id: "outage-clusters",
     type: "circle",
     filter: ["has", "point_count"],
     paint: {
         "circle-emissive-strength": 1,
-        "circle-color": "rgba(15, 14, 20, 0.86)",
-        "circle-stroke-width": 2,
-        "circle-stroke-color": "#f1f5f9",
-        "circle-radius": ["interpolate", ["linear"], ["get", "point_count"], 3, 16, 10, 22, 30, 30],
+        "circle-color": "rgba(18, 17, 20, 0.90)",
+        "circle-stroke-width": 1,
+        "circle-stroke-color": "rgba(255, 255, 255, 0.28)",
+        "circle-radius": ["interpolate", ["linear"], ["get", "point_count"], 3, 14, 10, 18, 30, 24],
         "circle-radius-transition": { duration: 300 }
     }
 } satisfies LayerProps;
@@ -61,9 +74,9 @@ export const clusterCountLayer = {
     layout: {
         "text-field": ["get", "point_count_abbreviated"],
         "text-font": ["DIN Offc Pro Medium", "Arial Unicode MS Bold"],
-        "text-size": 12
+        "text-size": 11
     },
-    paint: { "text-color": "#f1f5f9" }
+    paint: { "text-color": "rgba(255, 255, 255, 0.90)" }
 } satisfies LayerProps;
 
 export const outageHaloLayer = {
