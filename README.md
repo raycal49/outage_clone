@@ -7,10 +7,18 @@ Live map of CenterPoint Energy power outages across the Houston metro. A .NET ba
 ![React](https://img.shields.io/badge/React-19-61DAFB)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-**Live demo:** <!-- URL here, or delete this line --> · **Stack:** ASP.NET Core 10 · EF Core + SQL Server (spatial) · SignalR · React 19 + TypeScript + Mapbox GL
+## Stack
+
+- **Backend** — ASP.NET Core 10
+- **Data** — EF Core, SQL Server (spatial)
+- **Real-time** — SignalR
+- **Frontend** — React 19, TypeScript
+- **Maps** — Mapbox GL
+
+<!-- **Live demo:** URL here, or delete this line -->
 
 <!-- Replace with a GIF: outages loading, a cluster expanding on zoom, a popup opening, the "Live" pill ticking. 10-15s, ~800px wide. -->
-![Map demo](docs/demo.gif)
+<!--![Map demo](docs/demo.gif) -->
 
 ---
 
@@ -19,6 +27,12 @@ Live map of CenterPoint Energy power outages across the Houston metro. A .NET ba
 CenterPoint's own outage map is the only public view of where the power is out in Houston, and during a storm it's the page everyone in the city refreshes. I wanted to rebuild it end to end, from ingest through storage and push to rendering, because it forced me to solve problems a CRUD app never raises: a feed I don't control, geospatial data, and updates that have to reach browsers that are already connected.
 
 The feed publishes a full snapshot of every active outage, so all of the work sits downstream of it. Turning a stream of snapshots into durable state, and turning state changes into something a map can render smoothly.
+
+## Data source
+ 
+CenterPoint Energy has no documented public API. They do have an unauthenticated, undocumented JSON endpoint that returns a full snapshot of currently active outages. This is the same endpoint that CenterPoint Energy's own <a href=https://tracker.centerpointenergy.com/map/> official outage map </a> uses. Nothing here bypasses authentication, scrapes rendered HTML, or touches non-public data.
+ 
+Because it's a third party's undocumented endpoint, the project is deliberately conservative.
 
 ## Features
 
@@ -52,7 +66,7 @@ flowchart LR
     Reader --> Db
 ```
 
-`OutagePoller` wakes on a `PeriodicTimer`, fetches a snapshot through the `IOutageSource` abstraction, validates it, and hands it to `OutageSyncService`. Sync compares the snapshot to the active rows in the database and produces an `OutageSyncResult` counting what was added, updated, and deactivated. If anything changed, it broadcasts `OutagesChanged` over SignalR. Clients respond by calling `GET /OutageMap/OutageData`, which `OutageReader` serves as a GeoJSON `FeatureCollection` that Mapbox consumes directly.
+`OutagePoller` acts on a `PeriodicTimer`, fetches an "outage snapshot" through the `IOutageSource` abstraction, validates it, and hands it to `OutageSyncService`. The Sync service compares the snapshot to the active rows in the database and produces an `OutageSyncResult` counting what was added, updated, and deactivated. If anything changed, it broadcasts `OutagesChanged` over SignalR. Clients respond by calling `GET /OutageMap/OutageData`, which `OutageReader` serves as a GeoJSON `FeatureCollection` that Mapbox consumes directly.
 
 ```
 OutageMap.Server/
@@ -76,7 +90,7 @@ OutageMap.Server.Tests/
 
 ## Design decisions
 
-### One poller, many clients
+### One poller for many clients
 
 Each browser could hit the utility feed on its own interval, but that scales upstream load with viewers and hammers a third party I don't own. The server polls instead, on a configurable interval (`OutageFeed:PollInterval`, default 10 minutes), and fans out over SignalR, so upstream load stays constant no matter how many people have the map open.
 
@@ -184,9 +198,14 @@ Each feature carries `id`, `startTime`, `etrTime`, `numPeople`, `status`, `cause
 - Clustering happens in Mapbox in the browser, so the whole collection ships to every client regardless of viewport.
 - No auth. All the data here is public, so there's nothing to protect, but there's also no rate limiting on the API.
 
-## What I'd do next
+## Future Additions
 
-Cache the GeoJSON projection and invalidate it on sync. Add exponential backoff to the poller. Expose the outage history that's already being recorded (`ResolvedAt` gets written but nothing reads it) as a "restored in the last 24h" layer. Deploy to Azure App Service with a GitHub Actions workflow.
+* Expose the outage history that's already being recorded
+* Deploy to Azure App Service (maybe) with a GitHub Actions workflow.
+* Implement more extensive logging/observability so the application can be changed quickly in response to external API changes
+* Flesh out the furnishing and swapping of different outage sources in-application
+* Cache the GeoJSON projection and invalidate it on sync.
+* Add exponential backoff to the poller.
 
 ## License
 
