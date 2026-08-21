@@ -2,7 +2,7 @@
 
 Live map of CenterPoint Energy power outages across the Houston metro. A .NET background service polls the utility's public feed, diffs each snapshot against SQL Server, and pushes a change signal over SignalR so every connected browser updates without refreshing.
 
-<!-- Add a build badge once CI is public. Azure DevOps: https://dev.azure.com/{org}/{project}/_apis/build/status/{pipeline}?branchName=main -->
+[![Build Status](https://dev.azure.com/raymondcal/outage-proj/_apis/build/status%2Fraycal49.outage_clone?branchName=main)](https://dev.azure.com/raymondcal/outage-proj/_build/latest?definitionId=1&branchName=main)
 ![.NET](https://img.shields.io/badge/.NET-10.0-512BD4)
 ![React](https://img.shields.io/badge/React-19-61DAFB)
 ![License](https://img.shields.io/badge/license-MIT-green)
@@ -32,7 +32,7 @@ The feed publishes a full snapshot of every active outage, so all of the work si
  
 CenterPoint Energy has no documented public API. They do have an unauthenticated, undocumented JSON endpoint that returns a full snapshot of currently active outages. This is the same endpoint that CenterPoint Energy's own <a href=https://tracker.centerpointenergy.com/map/> official outage map </a> uses. Nothing here bypasses authentication, scrapes rendered HTML, or touches non-public data.
  
-Because it's a third party's undocumented endpoint, the project is deliberately conservative.
+Because it's a third party's undocumented endpoint, the project is deliberately conservative in its use.
 
 ## Features
 
