@@ -1,7 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using NetTopologySuite.Features;
-using OutageMap.Server.Infrastructure.Http;
-using OutageMap.Server.Services;
 
 namespace OutageMap.Server.Controllers;
 
